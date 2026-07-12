@@ -23,3 +23,6 @@ export async function fetchModels(
 
 import { OpenAICompatibleAdapter } from './openai';
 registerAdapter('openai-compatible', new OpenAICompatibleAdapter());
+
+import { GeminiAdapter } from './gemini';
+registerAdapter('gemini', new GeminiAdapter());
