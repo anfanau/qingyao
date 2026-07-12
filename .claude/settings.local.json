@@ -15,7 +15,8 @@
       "Bash(npx vite *)",
       "Bash(npm run *)",
       "Bash(git rm *)",
-      "Bash(bash \"C:/Users/Administrator/.claude/plugins/cache/claude-plugins-official/superpowers/6.1.1/skills/subagent-driven-development/scripts/review-package\" 662b401391ec2c818be7750017a9f97bad842b84 HEAD)"
+      "Bash(bash \"C:/Users/Administrator/.claude/plugins/cache/claude-plugins-official/superpowers/6.1.1/skills/subagent-driven-development/scripts/review-package\" 662b401391ec2c818be7750017a9f97bad842b84 HEAD)",
+      "Bash(bash \"C:/Users/Administrator/.claude/plugins/cache/claude-plugins-official/superpowers/6.1.1/skills/subagent-driven-development/scripts/review-package\" 29846a6 HEAD)"
     ]
   }
 }
