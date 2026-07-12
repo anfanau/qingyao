@@ -180,24 +180,31 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
           <span
             className="title-char"
             style={{
-              fontFamily: "'KaiTi','STKaiti','SimKai','Noto Serif SC','ZCOOL XiaoWei','Ma Shan Zheng',serif",
+              fontFamily: "'FangSong','Noto Serif SC','STKaiti','SimSun',serif",
               fontSize: 'min(38vh, 260px)',
               fontWeight: 900,
               lineHeight: 1,
-              background: 'linear-gradient(180deg, #f5d78a 0%, #d4a843 30%, #b8860b 50%, #d4a843 70%, #f5d78a 100%)',
+              letterSpacing: '0.05em',
+              background: 'linear-gradient(180deg, #ffe08a 0%, #f5d78a 25%, #d4a843 50%, #b8860b 75%, #8b6914 100%)',
               backgroundSize: '100% 200%',
               WebkitBackgroundClip: 'text',
               backgroundClip: 'text',
               color: 'transparent',
               textShadow: `
-                -1px -1px 0 rgba(255,255,255,0.9),
-                1px -1px 0 rgba(255,255,255,0.9),
-                -1px 1px 0 rgba(255,255,255,0.9),
-                1px 1px 0 rgba(255,255,255,0.7),
-                0 0 20px rgba(212,168,67,0.6),
-                0 0 40px rgba(212,168,67,0.4)
+                -2px -2px 0 rgba(255,255,255,0.95),
+                2px -2px 0 rgba(255,255,255,0.95),
+                -2px 2px 0 rgba(255,255,255,0.95),
+                2px 2px 0 rgba(255,255,255,0.8),
+                -3px 0 0 rgba(255,255,255,0.7),
+                3px 0 0 rgba(255,255,255,0.7),
+                0 -3px 0 rgba(255,255,255,0.7),
+                0 3px 0 rgba(255,255,255,0.7),
+                0 0 30px rgba(212,168,67,0.8),
+                0 0 60px rgba(212,168,67,0.5),
+                0 0 90px rgba(212,168,67,0.3),
+                0 0 120px rgba(255,215,138,0.2)
               `,
-              filter: 'url(#gold-glow-splash)',
+              filter: 'url(#gold-glow-splash) drop-shadow(0 4px 8px rgba(0,0,0,0.5))',
               animation: 'titleGoldShimmer 2.5s ease-in-out infinite',
             } as React.CSSProperties}
           >
@@ -206,24 +213,31 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
           <span
             className="title-char"
             style={{
-              fontFamily: "'KaiTi','STKaiti','SimKai','Noto Serif SC','ZCOOL XiaoWei','Ma Shan Zheng',serif",
+              fontFamily: "'FangSong','Noto Serif SC','STKaiti','SimSun',serif",
               fontSize: 'min(38vh, 260px)',
               fontWeight: 900,
               lineHeight: 1,
-              background: 'linear-gradient(180deg, #f5d78a 0%, #d4a843 30%, #b8860b 50%, #d4a843 70%, #f5d78a 100%)',
+              letterSpacing: '0.05em',
+              background: 'linear-gradient(180deg, #ffe08a 0%, #f5d78a 25%, #d4a843 50%, #b8860b 75%, #8b6914 100%)',
               backgroundSize: '100% 200%',
               WebkitBackgroundClip: 'text',
               backgroundClip: 'text',
               color: 'transparent',
               textShadow: `
-                -1px -1px 0 rgba(255,255,255,0.9),
-                1px -1px 0 rgba(255,255,255,0.9),
-                -1px 1px 0 rgba(255,255,255,0.9),
-                1px 1px 0 rgba(255,255,255,0.7),
-                0 0 20px rgba(212,168,67,0.6),
-                0 0 40px rgba(212,168,67,0.4)
+                -2px -2px 0 rgba(255,255,255,0.95),
+                2px -2px 0 rgba(255,255,255,0.95),
+                -2px 2px 0 rgba(255,255,255,0.95),
+                2px 2px 0 rgba(255,255,255,0.8),
+                -3px 0 0 rgba(255,255,255,0.7),
+                3px 0 0 rgba(255,255,255,0.7),
+                0 -3px 0 rgba(255,255,255,0.7),
+                0 3px 0 rgba(255,255,255,0.7),
+                0 0 30px rgba(212,168,67,0.8),
+                0 0 60px rgba(212,168,67,0.5),
+                0 0 90px rgba(212,168,67,0.3),
+                0 0 120px rgba(255,215,138,0.2)
               `,
-              filter: 'url(#gold-glow-splash)',
+              filter: 'url(#gold-glow-splash) drop-shadow(0 4px 8px rgba(0,0,0,0.5))',
               animation: 'titleGoldShimmer 2.5s ease-in-out infinite',
               animationDelay: '0.3s',
             } as React.CSSProperties}

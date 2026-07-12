@@ -1,5 +1,5 @@
 // src/components/SectMap/SectOrbitView.tsx
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Settings, BookOpen, ScrollText, Layers } from 'lucide-react';
 import { SECTS_DATA } from '../../data/sects-data';
 import { StarField } from '../Splash/StarField';
@@ -16,11 +16,27 @@ interface SectOrbitViewProps {
 }
 
 const ORBIT_RADIUS = 230;
+const ROTATION_SPEED = 0.06; // degrees per frame at 60fps ≈ 1 full rotation per 100s
 
 export function SectOrbitView({
   onOpenSettings, onOpenLorebooks, onOpenPresets, onOpenSessions, onSelectSect,
 }: SectOrbitViewProps) {
   const [hoveredSectId, setHoveredSectId] = useState<string | null>(null);
+  const [rotationAngle, setRotationAngle] = useState(0);
+  const animFrameRef = useRef<number>(0);
+
+  // JS-driven smooth orbit rotation
+  useEffect(() => {
+    let lastTime = performance.now();
+    const animate = (now: number) => {
+      const delta = now - lastTime;
+      lastTime = now;
+      setRotationAngle((prev) => (prev + ROTATION_SPEED * (delta / 16.67)) % 360);
+      animFrameRef.current = requestAnimationFrame(animate);
+    };
+    animFrameRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animFrameRef.current);
+  }, []);
 
   const displaySect = hoveredSectId
     ? SECTS_DATA.find((s) => s.id === hoveredSectId) ?? null
@@ -50,27 +66,32 @@ export function SectOrbitView({
           <OrbitRing radius={ORBIT_RADIUS} color="gold" animationClass="animate-orbit-60" />
           <OrbitRing radius={ORBIT_RADIUS + 30} color="cyan" animationClass="animate-orbit-80" />
 
-          {/* Static node container — nodes are positioned in a circle, not rotating */}
-          <div className="absolute" style={{ left: '50%', top: '50%', width: 0, height: 0 }}>
-            {SECTS_DATA.map((sect, i) => {
-              const angle = (360 / SECTS_DATA.length) * i;
-              return (
-                <SectNode
-                  key={sect.id}
-                  sect={sect}
-                  angleDeg={angle}
-                  radius={ORBIT_RADIUS}
-                  isSelected={hoveredSectId === sect.id}
-                  onClick={() => onSelectSect(sect.id)}
-                />
-              );
-            })}
-          </div>
+          {/* JS-driven orbiting nodes — smooth circular rotation, always clickable */}
+          {SECTS_DATA.map((sect, i) => {
+            const baseAngle = (360 / SECTS_DATA.length) * i;
+            const angle = baseAngle + rotationAngle;
+            return (
+              <SectNode
+                key={sect.id}
+                sect={sect}
+                angleDeg={angle}
+                radius={ORBIT_RADIUS}
+                isSelected={hoveredSectId === sect.id}
+                onClick={() => onSelectSect(sect.id)}
+              />
+            );
+          })}
 
+          {/* Center "青曜" axis — precisely centered */}
           <div
             className="absolute cursor-pointer group"
             onMouseEnter={() => setHoveredSectId(null)}
-            style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)', zIndex: 5 }}
+            style={{
+              left: '50%',
+              top: '50%',
+              transform: 'translate(-50%, -50%)',
+              zIndex: 5,
+            }}
           >
             <div className="absolute rounded-full animate-aether-pulse" style={{ width: 120, height: 120, left: -60, top: -60 }} />
             <div className="absolute rounded-full" style={{ width: 160, height: 160, left: -80, top: -80, border: '1px solid rgba(34,211,238,0.05)', borderRadius: '50%' }} />

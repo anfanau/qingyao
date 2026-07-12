@@ -1,4 +1,5 @@
 // src/components/SectDetail/SectDetailView.tsx
+import { useState, useEffect, useRef } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { SECTS_DATA } from '../../data/sects-data';
 import type { SectData, SubsectData } from '../../data/sects-data';
@@ -36,6 +37,21 @@ function SubsectNode({ sub, sect, angleDeg, radius, onClick }: {
 
 export function SectDetailView({ sectId, onBack, onEnterSubsect }: SectDetailViewProps) {
   const sect = SECTS_DATA.find((s) => s.id === sectId);
+  const [rotationAngle, setRotationAngle] = useState(0);
+  const animFrameRef = useRef<number>(0);
+
+  useEffect(() => {
+    let lastTime = performance.now();
+    const animate = (now: number) => {
+      const delta = now - lastTime;
+      lastTime = now;
+      setRotationAngle((prev) => (prev + 0.06 * (delta / 16.67)) % 360);
+      animFrameRef.current = requestAnimationFrame(animate);
+    };
+    animFrameRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animFrameRef.current);
+  }, []);
+
   if (!sect) return null;
   const Icon = sect.icon;
 
@@ -68,15 +84,15 @@ export function SectDetailView({ sectId, onBack, onEnterSubsect }: SectDetailVie
           <p className="mt-1 text-sm font-body text-mist-gray/70 text-center max-w-xs leading-relaxed">{sect.desc}</p>
         </div>
 
-        <div className="absolute" style={{ width: 0, height: 0, left: '50%', top: '50%' }}>
-          {sect.subs.map((sub, i) => {
-            const angle = (360 / sect.subs.length) * i - 90;
-            return (
-              <SubsectNode key={sub.name} sub={sub} sect={sect} angleDeg={angle} radius={DETAIL_ORBIT_RADIUS}
-                onClick={() => onEnterSubsect(sect.name, sub.name)} />
-            );
-          })}
-        </div>
+        {/* JS-driven orbiting subsects */}
+        {sect.subs.map((sub, i) => {
+          const baseAngle = (360 / sect.subs.length) * i - 90;
+          const angle = baseAngle + rotationAngle;
+          return (
+            <SubsectNode key={sub.name} sub={sub} sect={sect} angleDeg={angle} radius={DETAIL_ORBIT_RADIUS}
+              onClick={() => onEnterSubsect(sect.name, sub.name)} />
+          );
+        })}
       </div>
     </div>
   );
