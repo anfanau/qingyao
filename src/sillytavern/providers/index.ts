@@ -20,3 +20,6 @@ export async function fetchModels(
 ): Promise<string[]> {
   return getAdapter(provider).listModels(baseUrl, apiKey);
 }
+
+import { OpenAICompatibleAdapter } from './openai';
+registerAdapter('openai-compatible', new OpenAICompatibleAdapter());
