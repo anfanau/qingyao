@@ -16,31 +16,21 @@
   body {
     margin: 0;
     padding: 0;
-    font-family: 'Crimson Text', 'Georgia', serif;
-    background-color: #0d0d0d;
+    font-family: 'Noto Serif SC', 'Georgia', serif;
+    background-color: #0a0a0a;
     background-image:
-      radial-gradient(ellipse at 50% 0%, rgba(26, 20, 16, 0.8) 0%, transparent 70%),
-      radial-gradient(ellipse at 50% 100%, rgba(45, 36, 24, 0.3) 0%, transparent 60%),
-      radial-gradient(circle at 20% 50%, rgba(201, 168, 76, 0.03) 0%, transparent 50%),
-      radial-gradient(circle at 80% 50%, rgba(212, 101, 42, 0.02) 0%, transparent 50%);
+      radial-gradient(ellipse at 50% 0%, rgba(26, 26, 46, 0.8) 0%, transparent 70%),
+      radial-gradient(ellipse at 50% 100%, rgba(15, 15, 26, 0.3) 0%, transparent 60%),
+      radial-gradient(circle at 20% 50%, rgba(212, 168, 67, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(34, 211, 238, 0.03) 0%, transparent 50%);
     background-attachment: fixed;
     min-height: 100vh;
-    color: #e8dcc8;
+    color: #e2e8f0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Scroll/paper texture overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 9999;
-    background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3h1v1H1V3zm2-2h1v1H3V1z' fill='%23ffffff' fill-opacity='0.015' fill-rule='evenodd'/%3E%3C/svg%3E");
-  }
-
-  /* Particle overlay animation */
+  /* Subtle ink-wash particle overlay */
   body::after {
     content: '';
     position: fixed;
@@ -48,11 +38,11 @@
     pointer-events: none;
     z-index: 9998;
     background-image:
-      radial-gradient(1px 1px at 10% 20%, rgba(201, 168, 76, 0.15) 0%, transparent 100%),
-      radial-gradient(1px 1px at 30% 70%, rgba(201, 168, 76, 0.1) 0%, transparent 100%),
-      radial-gradient(1px 1px at 50% 10%, rgba(212, 101, 42, 0.08) 0%, transparent 100%),
-      radial-gradient(1px 1px at 70% 40%, rgba(201, 168, 76, 0.12) 0%, transparent 100%),
-      radial-gradient(1px 1px at 90% 80%, rgba(212, 101, 42, 0.06) 0%, transparent 100%);
+      radial-gradient(1px 1px at 10% 20%, rgba(212, 168, 67, 0.15) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 70%, rgba(34, 211, 238, 0.1) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 10%, rgba(212, 168, 67, 0.08) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 40%, rgba(34, 211, 238, 0.12) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 80%, rgba(212, 168, 67, 0.06) 0%, transparent 100%);
     animation: particleFloat 24s ease-in-out infinite;
   }
 
@@ -85,29 +75,29 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #1a1410;
+    background: #0a0a0a;
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #2d2418;
+    background: #2a2418;
     border-radius: 4px;
-    border: 1px solid rgba(201, 168, 76, 0.1);
+    border: 1px solid rgba(212, 168, 67, 0.15);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #3d3428;
-    border-color: rgba(201, 168, 76, 0.25);
+    background: #22d3ee;
+    border-color: rgba(34, 211, 238, 0.3);
   }
 
   ::-webkit-scrollbar-corner {
-    background: #0d0d0d;
+    background: #0a0a0a;
   }
 
   /* Firefox scrollbar */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #2d2418 #1a1410;
+    scrollbar-color: #2a2418 #0a0a0a;
   }
 
   /* Keyframes used by component animations */
@@ -129,8 +119,8 @@
 @layer components {
   /* Scroll Panel — Card background with uneven edges */
   .scroll-panel {
-    background: linear-gradient(135deg, #2d2418 0%, #1a1410 100%);
-    border: 1px solid rgba(244, 228, 193, 0.12);
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+    border: 1px solid rgba(212, 168, 67, 0.15);
     border-radius: 4px;
     clip-path: polygon(
       0% 4px,
@@ -149,11 +139,11 @@
 
   /* Parchment Card — Lighter variant for text backgrounds */
   .parchment-card {
-    background: linear-gradient(135deg, rgba(244, 228, 193, 0.08) 0%, rgba(232, 220, 200, 0.04) 100%);
-    border: 1px solid rgba(244, 228, 193, 0.1);
+    background: rgba(30, 30, 46, 0.7);
+    border: 1px solid rgba(34, 211, 238, 0.1);
     border-radius: 3px;
     box-shadow:
-      inset 0 1px 0 rgba(244, 228, 193, 0.05),
+      inset 0 1px 0 rgba(34, 211, 238, 0.05),
       0 1px 4px rgba(0, 0, 0, 0.3);
   }
 
@@ -167,26 +157,26 @@
     font-family: 'Inter', sans-serif;
     font-size: 0.875rem;
     font-weight: 500;
-    color: #c9a84c;
-    background: linear-gradient(135deg, rgba(45, 36, 24, 0.9) 0%, rgba(26, 20, 16, 0.9) 100%);
-    border: 1px solid rgba(201, 168, 76, 0.3);
+    color: #d4a843;
+    background: linear-gradient(135deg, rgba(42, 36, 24, 0.9) 0%, rgba(26, 26, 46, 0.9) 100%);
+    border: 1px solid rgba(212, 168, 67, 0.3);
     border-radius: 3px;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 0 8px rgba(201, 168, 76, 0.15);
-    text-shadow: 0 0 4px rgba(201, 168, 76, 0.2);
+    box-shadow: 0 0 8px rgba(212, 168, 67, 0.15);
+    text-shadow: 0 0 4px rgba(212, 168, 67, 0.2);
   }
 
   .rune-button:hover:not(:disabled) {
-    color: #f4e4c1;
-    background: linear-gradient(135deg, rgba(45, 36, 24, 1) 0%, rgba(26, 20, 16, 1) 100%);
-    border-color: rgba(201, 168, 76, 0.6);
-    box-shadow: 0 0 15px rgba(201, 168, 76, 0.4), 0 0 30px rgba(201, 168, 76, 0.1);
+    color: #e2e8f0;
+    background: linear-gradient(135deg, rgba(42, 36, 24, 1) 0%, rgba(26, 26, 46, 1) 100%);
+    border-color: rgba(34, 211, 238, 0.5);
+    box-shadow: 0 0 20px rgba(212, 168, 67, 0.4), 0 0 30px rgba(212, 168, 67, 0.1);
   }
 
   .rune-button:active:not(:disabled) {
     transform: translateY(1px);
-    box-shadow: 0 0 10px rgba(201, 168, 76, 0.3);
+    box-shadow: 0 0 10px rgba(212, 168, 67, 0.3);
   }
 
   .rune-button:disabled {
@@ -194,7 +184,7 @@
     cursor: not-allowed;
   }
 
-  /* Ember Button — Secondary/destructive action with ember glow */
+  /* Ember Button — Secondary/destructive action with vermilion glow */
   .ember-button {
     display: inline-flex;
     align-items: center;
@@ -204,19 +194,19 @@
     font-family: 'Inter', sans-serif;
     font-size: 0.875rem;
     font-weight: 500;
-    color: #d4652a;
-    background: linear-gradient(135deg, rgba(45, 36, 24, 0.9) 0%, rgba(26, 20, 16, 0.9) 100%);
-    border: 1px solid rgba(212, 101, 42, 0.25);
+    color: #dc2626;
+    background: linear-gradient(135deg, rgba(42, 36, 24, 0.9) 0%, rgba(26, 26, 46, 0.9) 100%);
+    border: 1px solid rgba(220, 38, 38, 0.25);
     border-radius: 3px;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 0 6px rgba(212, 101, 42, 0.1);
+    box-shadow: 0 0 6px rgba(220, 38, 38, 0.1);
   }
 
   .ember-button:hover:not(:disabled) {
-    color: #f4e4c1;
-    border-color: rgba(212, 101, 42, 0.5);
-    box-shadow: 0 0 12px rgba(212, 101, 42, 0.4);
+    color: #e2e8f0;
+    border-color: rgba(220, 38, 38, 0.5);
+    box-shadow: 0 0 12px rgba(220, 38, 38, 0.4);
   }
 
   .ember-button:active:not(:disabled) {
@@ -230,10 +220,10 @@
 
   /* Story Text — Primary narrative display */
   .story-text {
-    font-family: 'Crimson Text', 'Georgia', serif;
+    font-family: 'Noto Serif SC', 'Georgia', serif;
     font-size: 1.125rem;
     line-height: 1.8;
-    color: #e8dcc8;
+    color: #e2e8f0;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   }
 
@@ -242,22 +232,22 @@
     padding: 0.5rem 0.75rem;
     font-family: 'Inter', sans-serif;
     font-size: 0.875rem;
-    color: #e8dcc8;
-    background: rgba(26, 20, 16, 0.8);
-    border: 1px solid rgba(244, 228, 193, 0.12);
+    color: #e2e8f0;
+    background: #0f0f1a;
+    border: 1px solid rgba(212, 168, 67, 0.12);
     border-radius: 3px;
     outline: none;
     transition: all 0.2s ease;
   }
 
   .input-field::placeholder {
-    color: #8b7355;
+    color: #6b7280;
   }
 
   .input-field:focus {
-    border-color: rgba(201, 168, 76, 0.4);
-    box-shadow: 0 0 8px rgba(201, 168, 76, 0.15);
-    background: rgba(26, 20, 16, 0.95);
+    border-color: rgba(212, 168, 67, 0.5);
+    box-shadow: 0 0 8px rgba(212, 168, 67, 0.15);
+    background: #0f0f1a;
   }
 
   .input-field:disabled {
@@ -272,7 +262,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.75);
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(15, 15, 26, 0.85) 100%);
     backdrop-filter: blur(4px);
     z-index: 100;
     animation: fadeIn 0.2s ease-out;
@@ -285,12 +275,12 @@
     max-width: 640px;
     max-height: 85vh;
     overflow-y: auto;
-    background: linear-gradient(135deg, #1a1410 0%, #0d0d0d 100%);
-    border: 1px solid rgba(201, 168, 76, 0.2);
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+    border: 1px solid rgba(212, 168, 67, 0.2);
     border-radius: 4px;
     box-shadow:
       0 0 40px rgba(0, 0, 0, 0.5),
-      0 0 80px rgba(201, 168, 76, 0.05);
+      0 0 80px rgba(212, 168, 67, 0.05);
     clip-path: polygon(
       0% 4px,
       4px 0%,
@@ -310,7 +300,7 @@
     font-family: 'Inter', sans-serif;
     font-size: 0.8rem;
     font-weight: 500;
-    color: #8b7355;
+    color: #94a3b8;
     background: transparent;
     border: none;
     border-bottom: 2px solid transparent;
@@ -319,20 +309,20 @@
   }
 
   .tab-button:hover {
-    color: #e8dcc8;
+    color: #e2e8f0;
   }
 
   .tab-button.active {
-    color: #c9a84c;
-    border-bottom-color: #c9a84c;
+    color: #d4a843;
+    border-bottom-color: #d4a843;
   }
 
   /* Stat Bar Background — For HP/MP bars */
   .stat-bar-bg {
     height: 0.625rem;
-    background: rgba(0, 0, 0, 0.5);
+    background: #0a0a0a;
     border-radius: 3px;
-    border: 1px solid rgba(244, 228, 193, 0.08);
+    border: 1px solid rgba(212, 168, 67, 0.08);
     overflow: hidden;
   }
 
@@ -358,13 +348,13 @@
 
   /* HP-specific bar coloring */
   .stat-bar-fill.hp {
-    background: linear-gradient(90deg, #6b0000 0%, #8b0000 50%, #b30000 100%);
-    box-shadow: 0 0 6px rgba(139, 0, 0, 0.4);
+    background: linear-gradient(90deg, #4a0d0d 0%, #991b1b 50%, #dc2626 100%);
+    box-shadow: 0 0 6px rgba(153, 27, 27, 0.4);
   }
 
   /* MP-specific bar coloring */
   .stat-bar-fill.mp {
-    background: linear-gradient(90deg, #143d70 0%, #1e5fa8 50%, #2878d0 100%);
-    box-shadow: 0 0 6px rgba(30, 95, 168, 0.4);
+    background: linear-gradient(90deg, #0f2140 0%, #1e3a5f 50%, #2878d0 100%);
+    box-shadow: 0 0 6px rgba(30, 58, 95, 0.4);
   }
 }
