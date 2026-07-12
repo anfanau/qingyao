@@ -1,0 +1,359 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Base Layer — Global Styles
+   ============================================================ */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Crimson Text', 'Georgia', serif;
+    background-color: #0d0d0d;
+    background-image:
+      radial-gradient(ellipse at 50% 0%, rgba(26, 20, 16, 0.8) 0%, transparent 70%),
+      radial-gradient(ellipse at 50% 100%, rgba(45, 36, 24, 0.3) 0%, transparent 60%),
+      radial-gradient(circle at 20% 50%, rgba(201, 168, 76, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(212, 101, 42, 0.02) 0%, transparent 50%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #e8dcc8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Scroll/paper texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3h1v1H1V3zm2-2h1v1H3V1z' fill='%23ffffff' fill-opacity='0.015' fill-rule='evenodd'/%3E%3C/svg%3E");
+  }
+
+  /* Particle overlay animation */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9998;
+    background-image:
+      radial-gradient(1px 1px at 10% 20%, rgba(201, 168, 76, 0.15) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 70%, rgba(201, 168, 76, 0.1) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 10%, rgba(212, 101, 42, 0.08) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 40%, rgba(201, 168, 76, 0.12) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 80%, rgba(212, 101, 42, 0.06) 0%, transparent 100%);
+    animation: particleFloat 24s ease-in-out infinite;
+  }
+
+  @keyframes particleFloat {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+      opacity: 0.6;
+    }
+    25% {
+      transform: translateY(-8px) scale(1.05);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translateY(4px) scale(0.95);
+      opacity: 0.5;
+    }
+    75% {
+      transform: translateY(-4px) scale(1.02);
+      opacity: 0.7;
+    }
+  }
+
+  /* ============================================================
+     Custom Scrollbar
+     ============================================================ */
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1a1410;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2d2418;
+    border-radius: 4px;
+    border: 1px solid rgba(201, 168, 76, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3d3428;
+    border-color: rgba(201, 168, 76, 0.25);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: #0d0d0d;
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #2d2418 #1a1410;
+  }
+}
+
+/* ============================================================
+   Components Layer — Reusable UI Classes
+   ============================================================ */
+
+@layer components {
+  /* Scroll Panel — Card background with uneven edges */
+  .scroll-panel {
+    background: linear-gradient(135deg, #2d2418 0%, #1a1410 100%);
+    border: 1px solid rgba(244, 228, 193, 0.12);
+    border-radius: 4px;
+    clip-path: polygon(
+      0% 4px,
+      4px 0%,
+      calc(100% - 4px) 0%,
+      100% 4px,
+      100% calc(100% - 4px),
+      calc(100% - 4px) 100%,
+      4px 100%,
+      0% calc(100% - 4px)
+    );
+    box-shadow:
+      inset 0 0 30px rgba(0, 0, 0, 0.3),
+      0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Parchment Card — Lighter variant for text backgrounds */
+  .parchment-card {
+    background: linear-gradient(135deg, rgba(244, 228, 193, 0.08) 0%, rgba(232, 220, 200, 0.04) 100%);
+    border: 1px solid rgba(244, 228, 193, 0.1);
+    border-radius: 3px;
+    box-shadow:
+      inset 0 1px 0 rgba(244, 228, 193, 0.05),
+      0 1px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Rune Button — Primary action button with glowing gold effect */
+  .rune-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #c9a84c;
+    background: linear-gradient(135deg, rgba(45, 36, 24, 0.9) 0%, rgba(26, 20, 16, 0.9) 100%);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 8px rgba(201, 168, 76, 0.15);
+    text-shadow: 0 0 4px rgba(201, 168, 76, 0.2);
+  }
+
+  .rune-button:hover:not(:disabled) {
+    color: #f4e4c1;
+    background: linear-gradient(135deg, rgba(45, 36, 24, 1) 0%, rgba(26, 20, 16, 1) 100%);
+    border-color: rgba(201, 168, 76, 0.6);
+    box-shadow: 0 0 15px rgba(201, 168, 76, 0.4), 0 0 30px rgba(201, 168, 76, 0.1);
+  }
+
+  .rune-button:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 0 10px rgba(201, 168, 76, 0.3);
+  }
+
+  .rune-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* Ember Button — Secondary/destructive action with ember glow */
+  .ember-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #d4652a;
+    background: linear-gradient(135deg, rgba(45, 36, 24, 0.9) 0%, rgba(26, 20, 16, 0.9) 100%);
+    border: 1px solid rgba(212, 101, 42, 0.25);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 6px rgba(212, 101, 42, 0.1);
+  }
+
+  .ember-button:hover:not(:disabled) {
+    color: #f4e4c1;
+    border-color: rgba(212, 101, 42, 0.5);
+    box-shadow: 0 0 12px rgba(212, 101, 42, 0.4);
+  }
+
+  .ember-button:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  .ember-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* Story Text — Primary narrative display */
+  .story-text {
+    font-family: 'Crimson Text', 'Georgia', serif;
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #e8dcc8;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Input Field — Styled text inputs */
+  .input-field {
+    padding: 0.5rem 0.75rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: #e8dcc8;
+    background: rgba(26, 20, 16, 0.8);
+    border: 1px solid rgba(244, 228, 193, 0.12);
+    border-radius: 3px;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+
+  .input-field::placeholder {
+    color: #8b7355;
+  }
+
+  .input-field:focus {
+    border-color: rgba(201, 168, 76, 0.4);
+    box-shadow: 0 0 8px rgba(201, 168, 76, 0.15);
+    background: rgba(26, 20, 16, 0.95);
+  }
+
+  .input-field:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* Modal Overlay — Dark backdrop for modals */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  /* Modal Panel — The actual modal container */
+  .modal-panel {
+    position: relative;
+    width: 90vw;
+    max-width: 640px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: linear-gradient(135deg, #1a1410 0%, #0d0d0d 100%);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 4px;
+    box-shadow:
+      0 0 40px rgba(0, 0, 0, 0.5),
+      0 0 80px rgba(201, 168, 76, 0.05);
+    clip-path: polygon(
+      0% 4px,
+      4px 0%,
+      calc(100% - 4px) 0%,
+      100% 4px,
+      100% calc(100% - 4px),
+      calc(100% - 4px) 100%,
+      4px 100%,
+      0% calc(100% - 4px)
+    );
+    animation: slideUp 0.3s ease-out;
+  }
+
+  /* Tab Button — For modal tab navigation */
+  .tab-button {
+    padding: 0.5rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #8b7355;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .tab-button:hover {
+    color: #e8dcc8;
+  }
+
+  .tab-button.active {
+    color: #c9a84c;
+    border-bottom-color: #c9a84c;
+  }
+
+  /* Stat Bar Background — For HP/MP bars */
+  .stat-bar-bg {
+    height: 0.625rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+    border: 1px solid rgba(244, 228, 193, 0.08);
+    overflow: hidden;
+  }
+
+  /* Stat Bar Fill — The actual colored bar */
+  .stat-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.5s ease;
+    position: relative;
+  }
+
+  .stat-bar-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 100%
+    );
+  }
+
+  /* HP-specific bar coloring */
+  .stat-bar-fill.hp {
+    background: linear-gradient(90deg, #6b0000 0%, #8b0000 50%, #b30000 100%);
+    box-shadow: 0 0 6px rgba(139, 0, 0, 0.4);
+  }
+
+  /* MP-specific bar coloring */
+  .stat-bar-fill.mp {
+    background: linear-gradient(90deg, #143d70 0%, #1e5fa8 50%, #2878d0 100%);
+    box-shadow: 0 0 6px rgba(30, 95, 168, 0.4);
+  }
+}
