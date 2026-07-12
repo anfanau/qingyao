@@ -8,3 +8,5 @@ export * from './variables';
 export * from './vars-merger';
 export * from './importer';
 export * from './editor-utils';
+export * from './providers/index';
+export * from './providers/types';
