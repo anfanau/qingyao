@@ -193,7 +193,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
 
       {/* Title golden particles */}
       {phase === 'title' && (
-        <div className="absolute inset-0 pointer-events-none z-35" aria-hidden="true">
+        <div className="absolute inset-0 pointer-events-none z-[35]" aria-hidden="true">
           {Array.from({ length: 20 }, (_, i) => (
             <div
               key={i}
