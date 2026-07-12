@@ -20,7 +20,7 @@ export function Chat() {
   if (!activeChat) {
     return (
       <div className="flex-1 flex items-center justify-center">
-        <p className="text-faded-ink font-ui text-sm">Select or create a chat to begin.</p>
+        <p className="text-mist-gray font-ui text-sm">请选择或创建一个论道会话...</p>
       </div>
     );
   }
@@ -30,7 +30,7 @@ export function Chat() {
       {/* Messages */}
       <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
         {activeChat.messages.length === 0 && (
-          <p className="text-center text-faded-ink/50 italic text-sm font-ui mt-8">
+          <p className="text-center text-mist-gray/50 italic text-sm font-ui mt-8">
             No messages yet. Start the adventure!
           </p>
         )}
@@ -42,12 +42,12 @@ export function Chat() {
             <div
               className={`max-w-[80%] p-3 parchment-card rounded ${
                 msg.role === 'user'
-                  ? 'border-arcane-gold/20'
-                  : 'border-aged-leather/40'
+                  ? 'border-celestial-gold/20'
+                  : 'border-faded-gold/40'
               }`}
             >
-              <div className="text-xs font-ui text-faded-ink mb-1 uppercase">
-                {msg.role === 'user' ? 'You' : msg.role === 'assistant' ? 'Dungeon Master' : 'System'}
+              <div className="text-xs font-ui text-mist-gray mb-1 uppercase">
+                {msg.role === 'user' ? '弟子' : msg.role === 'assistant' ? '天道' : '天机'}
               </div>
               <div className="story-text text-sm">
                 {msg.role === 'assistant' && msg.parsedTags?.maintext
@@ -61,19 +61,19 @@ export function Chat() {
       </div>
 
       {/* Input */}
-      <div className="border-t border-aged-leather/30 p-4">
+      <div className="border-t border-faded-gold/30 p-4">
         <div className="flex gap-2">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-            placeholder="Type your action..."
+            placeholder="诉说心中疑惑..."
             disabled={isSending}
             className="input-field flex-1"
           />
           <button onClick={handleSend} disabled={isSending || !input.trim()} className="rune-button">
-            {isSending ? '...' : 'Send'}
+            {isSending ? '...' : '发送神识'}
           </button>
         </div>
       </div>

@@ -191,15 +191,15 @@ export function GameView({ onOpenSettings, onOpenLorebooks, onOpenPresets }: Gam
   return (
     <div className="flex flex-col h-screen">
       {/* Top bar */}
-      <div className="flex items-center justify-between px-4 py-2 border-b border-aged-leather/30 bg-dark-parchment/50">
+      <div className="flex items-center justify-between px-4 py-2 border-b border-faded-gold/30 bg-mystic-azure/50">
         <div className="flex items-center gap-4">
-          <h1 className="font-display text-lg text-arcane-gold">
+          <h1 className="font-title text-lg text-celestial-gold">
             {activeChat?.characterName ?? 'Adventurer'}
           </h1>
           {vars && (
             <div className="flex items-center gap-3">
               <div className="w-24">
-                <div className="flex justify-between text-[10px] font-ui text-faded-ink">
+                <div className="flex justify-between text-[10px] font-ui text-mist-gray">
                   <span>HP</span>
                   <span>{vars.hp}/{vars.maxHp}</span>
                 </div>
@@ -208,7 +208,7 @@ export function GameView({ onOpenSettings, onOpenLorebooks, onOpenPresets }: Gam
                 </div>
               </div>
               <div className="w-24">
-                <div className="flex justify-between text-[10px] font-ui text-faded-ink">
+                <div className="flex justify-between text-[10px] font-ui text-mist-gray">
                   <span>MP</span>
                   <span>{vars.mp}/{vars.maxMp}</span>
                 </div>
@@ -221,11 +221,11 @@ export function GameView({ onOpenSettings, onOpenLorebooks, onOpenPresets }: Gam
         </div>
         <div className="flex items-center gap-2">
           {!activeChatId && (
-            <button onClick={handleNewGame} className="rune-button text-xs">New Game</button>
+            <button onClick={handleNewGame} className="rune-button text-xs">新游戏</button>
           )}
-          <button onClick={onOpenLorebooks} className="rune-button text-xs">Books</button>
-          <button onClick={onOpenPresets} className="rune-button text-xs">Presets</button>
-          <button onClick={onOpenSettings} className="rune-button text-xs">Settings</button>
+          <button onClick={onOpenLorebooks} className="rune-button text-xs">典籍</button>
+          <button onClick={onOpenPresets} className="rune-button text-xs">预设</button>
+          <button onClick={onOpenSettings} className="rune-button text-xs">设置</button>
         </div>
       </div>
 
@@ -234,9 +234,9 @@ export function GameView({ onOpenSettings, onOpenLorebooks, onOpenPresets }: Gam
         {!activeChatId ? (
           <div className="flex-1 flex items-center justify-center">
             <div className="text-center">
-              <p className="font-display text-2xl text-arcane-gold mb-4">The adventure awaits...</p>
+              <p className="font-title text-2xl text-celestial-gold mb-4">静待天机...</p>
               <button onClick={handleNewGame} className="rune-button text-lg px-8 py-3">
-                Begin Your Journey
+                踏入仙途
               </button>
             </div>
           </div>

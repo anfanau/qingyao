@@ -16,18 +16,18 @@ export function SettingsModal({ onClose }: SettingsModalProps) {
     return (
       <div className="modal-overlay">
         <div className="modal-panel p-6">
-          <p className="text-faded-ink">Settings not loaded.</p>
+          <p className="text-mist-gray">Settings not loaded.</p>
         </div>
       </div>
     );
   }
 
   const tabs: { key: TabName; label: string }[] = [
-    { key: 'character', label: 'Character' },
+    { key: 'character', label: '角色' },
     { key: 'primary-api', label: 'Primary API' },
     { key: 'secondary-api', label: 'Secondary API' },
     { key: 'ui', label: 'UI' },
-    { key: 'defaults', label: 'Defaults' },
+    { key: 'defaults', label: '初始' },
   ];
 
   const handleChange = async <K extends keyof AppSettings>(key: K, value: AppSettings[K]) => {
@@ -62,13 +62,13 @@ export function SettingsModal({ onClose }: SettingsModalProps) {
     <div className="modal-overlay">
       <div className="modal-panel p-0 flex flex-col h-[85vh]">
         {/* Header */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-aged-leather/30">
-          <h2 className="font-display text-lg text-arcane-gold">Settings</h2>
-          <button onClick={onClose} className="text-faded-ink hover:text-parchment text-lg">{'✕'}</button>
+        <div className="flex items-center justify-between px-4 py-3 border-b border-faded-gold/30">
+          <h2 className="font-title text-lg text-celestial-gold">设置</h2>
+          <button onClick={onClose} className="text-mist-gray hover:text-scroll-white text-lg">{'✕'}</button>
         </div>
 
         {/* Tabs */}
-        <div className="flex border-b border-aged-leather/30 px-4 overflow-x-auto">
+        <div className="flex border-b border-faded-gold/30 px-4 overflow-x-auto">
           {tabs.map((tab) => (
             <button
               key={tab.key}
@@ -86,12 +86,12 @@ export function SettingsModal({ onClose }: SettingsModalProps) {
           {activeTab === 'character' && (
             <div className="space-y-4">
               <TextField
-                label="Character Name"
+                label="角色名"
                 value={settings.characterName}
                 onChange={(v) => handleChange('characterName', v)}
               />
               <TextField
-                label="User Name"
+                label="道号"
                 value={settings.userName}
                 onChange={(v) => handleChange('userName', v)}
               />
@@ -124,12 +124,12 @@ export function SettingsModal({ onClose }: SettingsModalProps) {
           {/* Secondary API Tab */}
           {activeTab === 'secondary-api' && (
             <div className="space-y-4">
-              <label className="flex items-center gap-2 text-xs font-ui text-faded-ink cursor-pointer">
+              <label className="flex items-center gap-2 text-xs font-ui text-mist-gray cursor-pointer">
                 <input
                   type="checkbox"
                   checked={settings.api.secondary.enabled}
                   onChange={(e) => handleApiChange('secondary', 'enabled', e.target.checked)}
-                  className="accent-arcane-gold"
+                  className="accent-celestial-gold"
                 />
                 Enable Secondary API
               </label>
@@ -161,7 +161,7 @@ export function SettingsModal({ onClose }: SettingsModalProps) {
           {activeTab === 'ui' && (
             <div className="space-y-4">
               <div>
-                <label className="block text-xs font-ui text-faded-ink mb-2">UI Mode</label>
+                <label className="block text-xs font-ui text-mist-gray mb-2">UI Mode</label>
                 <div className="flex gap-2">
                   <button
                     onClick={() => handleChange('uiMode', 'chat')}
@@ -183,31 +183,31 @@ export function SettingsModal({ onClose }: SettingsModalProps) {
           {/* Defaults Tab */}
           {activeTab === 'defaults' && (
             <div className="space-y-4">
-              <p className="text-xs font-ui text-faded-ink">Default starting values for new game sessions.</p>
+              <p className="text-xs font-ui text-mist-gray">Default starting values for new game sessions.</p>
               <div className="grid grid-cols-2 gap-4">
                 <NumberField
-                  label="Default HP"
+                  label="初始气血"
                   value={settings.defaultGameVariables.maxHp}
                   min={1}
                   max={9999}
                   onChange={(v) => handleDefaultsChange('maxHp', v)}
                 />
                 <NumberField
-                  label="Default MP"
+                  label="初始灵力"
                   value={settings.defaultGameVariables.maxMp}
                   min={0}
                   max={9999}
                   onChange={(v) => handleDefaultsChange('maxMp', v)}
                 />
                 <NumberField
-                  label="Default Level"
+                  label="初始境界"
                   value={settings.defaultGameVariables.level}
                   min={1}
                   max={999}
                   onChange={(v) => handleDefaultsChange('level', v)}
                 />
                 <NumberField
-                  label="Default Gold"
+                  label="初始灵石"
                   value={settings.defaultGameVariables.gold}
                   min={0}
                   max={999999}
@@ -237,7 +237,7 @@ function TextField({
 }) {
   return (
     <div>
-      <label className="block text-xs font-ui text-faded-ink mb-1">{label}</label>
+      <label className="block text-xs font-ui text-mist-gray mb-1">{label}</label>
       <input
         type="text"
         value={value}
@@ -260,7 +260,7 @@ function PasswordField({
 }) {
   return (
     <div>
-      <label className="block text-xs font-ui text-faded-ink mb-1">{label}</label>
+      <label className="block text-xs font-ui text-mist-gray mb-1">{label}</label>
       <input
         type="password"
         value={value}
@@ -286,7 +286,7 @@ function NumberField({
 }) {
   return (
     <div>
-      <label className="block text-xs font-ui text-faded-ink mb-1">{label}</label>
+      <label className="block text-xs font-ui text-mist-gray mb-1">{label}</label>
       <input
         type="number"
         value={value}

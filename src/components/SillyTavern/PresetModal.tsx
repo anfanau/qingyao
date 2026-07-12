@@ -77,10 +77,10 @@ export function PresetModal({ onClose }: PresetModalProps) {
   };
 
   const tabs: { key: TabName; label: string }[] = [
-    { key: 'sampling', label: 'Sampling' },
-    { key: 'prompts', label: 'Prompts' },
-    { key: 'custom', label: 'Custom' },
-    { key: 'order', label: 'Order' },
+    { key: 'sampling', label: '采样' },
+    { key: 'prompts', label: '提示词' },
+    { key: 'custom', label: '自定义' },
+    { key: 'order', label: '顺序' },
   ];
 
   // Custom prompt state
@@ -106,9 +106,9 @@ export function PresetModal({ onClose }: PresetModalProps) {
     <div className="modal-overlay">
       <div className="modal-panel p-0 flex flex-col h-[85vh]">
         {/* Header */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-aged-leather/30">
+        <div className="flex items-center justify-between px-4 py-3 border-b border-faded-gold/30">
           <div className="flex items-center gap-3">
-            <h2 className="font-display text-lg text-arcane-gold">Presets</h2>
+            <h2 className="font-title text-lg text-celestial-gold">Presets</h2>
             {/* Preset selector */}
             <select
               value={selectedPresetId ?? ''}
@@ -121,11 +121,11 @@ export function PresetModal({ onClose }: PresetModalProps) {
             </select>
             <button onClick={handleNewPreset} className="rune-button text-xs px-2 py-1">+ New</button>
           </div>
-          <button onClick={onClose} className="text-faded-ink hover:text-parchment text-lg">{'✕'}</button>
+          <button onClick={onClose} className="text-mist-gray hover:text-scroll-white text-lg">{'✕'}</button>
         </div>
 
         {/* Tabs */}
-        <div className="flex border-b border-aged-leather/30 px-4">
+        <div className="flex border-b border-faded-gold/30 px-4">
           {tabs.map((tab) => (
             <button
               key={tab.key}
@@ -218,7 +218,7 @@ export function PresetModal({ onClose }: PresetModalProps) {
           {/* Custom Tab */}
           {activeTab === 'custom' && (
             <div className="space-y-4">
-              <p className="text-xs font-ui text-faded-ink">Custom name-content pairs for prompt injection.</p>
+              <p className="text-xs font-ui text-mist-gray">Custom name-content pairs for prompt injection.</p>
 
               <div className="flex gap-2">
                 <input
@@ -239,18 +239,18 @@ export function PresetModal({ onClose }: PresetModalProps) {
               </div>
 
               {(!settings.custom_prompts || settings.custom_prompts.length === 0) ? (
-                <p className="text-xs text-faded-ink/50 italic">No custom prompts configured.</p>
+                <p className="text-xs text-mist-gray/50 italic">No custom prompts configured.</p>
               ) : (
                 <div className="space-y-2">
                   {settings.custom_prompts.map((cp, i) => (
                     <div key={i} className="flex items-center justify-between p-2 parchment-card rounded">
                       <div className="flex-1 min-w-0">
-                        <span className="text-xs font-ui text-parchment">{cp.name}</span>
-                        <span className="text-xs text-faded-ink/70 ml-2">{cp.content}</span>
+                        <span className="text-xs font-ui text-scroll-white">{cp.name}</span>
+                        <span className="text-xs text-mist-gray/70 ml-2">{cp.content}</span>
                       </div>
                       <button
                         onClick={() => removeCustomPrompt(i)}
-                        className="text-ember hover:text-ember/80 text-xs ml-2 shrink-0"
+                        className="text-vermil-red hover:text-vermil-red/80 text-xs ml-2 shrink-0"
                       >
                         {'✕'}
                       </button>
@@ -264,7 +264,7 @@ export function PresetModal({ onClose }: PresetModalProps) {
           {/* Order Tab */}
           {activeTab === 'order' && (
             <div>
-              <p className="text-xs font-ui text-faded-ink mb-3">Arrange prompt blocks in the order they appear.</p>
+              <p className="text-xs font-ui text-mist-gray mb-3">Arrange prompt blocks in the order they appear.</p>
               <PromptOrderEditor
                 items={settings.prompt_order || []}
                 onChange={(items) => updateSettings({ prompt_order: items })}
@@ -296,7 +296,7 @@ function SliderField({
 }) {
   return (
     <div>
-      <div className="flex justify-between text-xs font-ui text-faded-ink mb-1">
+      <div className="flex justify-between text-xs font-ui text-mist-gray mb-1">
         <span>{label}</span>
         <span>{value}</span>
       </div>
@@ -307,7 +307,7 @@ function SliderField({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-arcane-gold"
+        className="w-full accent-celestial-gold"
       />
     </div>
   );
@@ -328,7 +328,7 @@ function NumberField({
 }) {
   return (
     <div>
-      <label className="block text-xs font-ui text-faded-ink mb-1">{label}</label>
+      <label className="block text-xs font-ui text-mist-gray mb-1">{label}</label>
       <input
         type="number"
         value={value}
@@ -352,7 +352,7 @@ function TextareaField({
 }) {
   return (
     <div>
-      <label className="block text-xs font-ui text-faded-ink mb-1">{label}</label>
+      <label className="block text-xs font-ui text-mist-gray mb-1">{label}</label>
       <textarea
         value={value}
         onChange={(e) => onChange(e.target.value)}

@@ -26,8 +26,8 @@ export function LorebookEditorModal({ lorebookId, onBack }: LorebookEditorModalP
     return (
       <div className="modal-overlay">
         <div className="modal-panel p-6">
-          <p className="text-faded-ink">Lorebook not found.</p>
-          <button onClick={onBack} className="rune-button mt-4">Back to Books</button>
+          <p className="text-mist-gray">Lorebook not found.</p>
+          <button onClick={onBack} className="rune-button mt-4">返回典籍</button>
         </div>
       </div>
     );
@@ -61,24 +61,24 @@ export function LorebookEditorModal({ lorebookId, onBack }: LorebookEditorModalP
     <div className="modal-overlay">
       <div className="modal-panel max-w-4xl p-0 flex flex-col h-[85vh]">
         {/* Header */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-aged-leather/30">
+        <div className="flex items-center justify-between px-4 py-3 border-b border-faded-gold/30">
           <div className="flex items-center gap-3">
             <button onClick={onBack} className="rune-button text-xs px-3 py-1">
-              Back to Books
+              返回典籍
             </button>
-            <h2 className="font-display text-lg text-arcane-gold">{lorebook.name}</h2>
+            <h2 className="font-title text-lg text-celestial-gold">{lorebook.name}</h2>
           </div>
           <button onClick={handleAddEntry} className="rune-button text-xs px-3 py-1">
-            + New Entry
+            新增条目
           </button>
         </div>
 
         {/* Body */}
         <div className="flex flex-1 overflow-hidden">
           {/* Entry list */}
-          <div className="w-64 border-r border-aged-leather/30 overflow-y-auto p-3">
+          <div className="w-64 border-r border-faded-gold/30 overflow-y-auto p-3">
             {entries.length === 0 ? (
-              <p className="text-xs text-faded-ink/50 italic">No entries yet.</p>
+              <p className="text-xs text-mist-gray/50 italic">No entries yet.</p>
             ) : (
               <div className="space-y-2">
                 {entries.map((entry) => (
@@ -86,13 +86,13 @@ export function LorebookEditorModal({ lorebookId, onBack }: LorebookEditorModalP
                     key={entry.id}
                     className={`p-2 rounded cursor-pointer transition-colors ${
                       selectedEntryId === entry.id
-                        ? 'bg-aged-leather/40 border border-arcane-gold/30'
-                        : 'bg-dark-parchment/30 border border-transparent hover:bg-aged-leather/20'
+                        ? 'bg-faded-gold/40 border border-celestial-gold/30'
+                        : 'bg-mystic-azure/30 border border-transparent hover:bg-faded-gold/20'
                     }`}
                     onClick={() => handleSelectEntry(entry.id)}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-ui text-parchment truncate flex-1">
+                      <span className="text-xs font-ui text-scroll-white truncate flex-1">
                         {entry.keys.join(', ') || '(no keys)'}
                       </span>
                       <button
@@ -100,13 +100,13 @@ export function LorebookEditorModal({ lorebookId, onBack }: LorebookEditorModalP
                           e.stopPropagation();
                           handleDeleteEntry(entry.id);
                         }}
-                        className="text-ember hover:text-ember/80 text-xs ml-2 shrink-0"
+                        className="text-vermil-red hover:text-vermil-red/80 text-xs ml-2 shrink-0"
                         title="Delete entry"
                       >
                         {'✕'}
                       </button>
                     </div>
-                    <span className="text-[10px] text-faded-ink">{entry.content.slice(0, 40)}</span>
+                    <span className="text-[10px] text-mist-gray">{entry.content.slice(0, 40)}</span>
                   </div>
                 ))}
               </div>
@@ -118,7 +118,7 @@ export function LorebookEditorModal({ lorebookId, onBack }: LorebookEditorModalP
             {selectedEntry ? (
               <EntryForm entry={selectedEntry} onChange={handleUpdateEntry} />
             ) : (
-              <p className="text-sm text-faded-ink/50 italic">Select an entry to edit, or create a new one.</p>
+              <p className="text-sm text-mist-gray/50 italic">Select an entry to edit, or create a new one.</p>
             )}
           </div>
         </div>

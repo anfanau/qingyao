@@ -44,18 +44,18 @@ export function ChatModal({ onClose, onLoad }: ChatModalProps) {
       <div className="modal-panel p-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
-          <h2 className="font-display text-lg text-arcane-gold">Chat Sessions</h2>
-          <button onClick={onClose} className="text-faded-ink hover:text-parchment text-lg">{'✕'}</button>
+          <h2 className="font-title text-lg text-celestial-gold">论道纪要</h2>
+          <button onClick={onClose} className="text-mist-gray hover:text-scroll-white text-lg">{'✕'}</button>
         </div>
 
         {/* New Game */}
         <button onClick={handleNewGame} className="rune-button text-sm mb-4 w-full">
-          + New Game
+          + 新会话
         </button>
 
         {/* Session List */}
         {chats.length === 0 ? (
-          <p className="text-sm text-faded-ink/50 italic">No sessions yet. Start a new game!</p>
+          <p className="text-sm text-mist-gray/50 italic">尚无论道记录...</p>
         ) : (
           <div className="space-y-2 max-h-[50vh] overflow-y-auto">
             {chats.sort((a, b) => b.updatedAt - a.updatedAt).map((chat) => (
@@ -71,13 +71,13 @@ export function ChatModal({ onClose, onLoad }: ChatModalProps) {
                         className="input-field flex-1 text-xs"
                         autoFocus
                       />
-                      <button onClick={() => handleRename(chat.id)} className="rune-button text-xs px-2 py-1">Save</button>
-                      <button onClick={() => setRenamingId(null)} className="ember-button text-xs px-2 py-1">Cancel</button>
+                      <button onClick={() => handleRename(chat.id)} className="rune-button text-xs px-2 py-1">保存</button>
+                      <button onClick={() => setRenamingId(null)} className="ember-button text-xs px-2 py-1">取消</button>
                     </div>
                   ) : (
                     <>
-                      <h3 className="font-ui text-sm text-parchment truncate">{chat.name}</h3>
-                      <div className="flex gap-3 text-[10px] text-faded-ink mt-1">
+                      <h3 className="font-ui text-sm text-scroll-white truncate">{chat.name}</h3>
+                      <div className="flex gap-3 text-[10px] text-mist-gray mt-1">
                         <span>{chat.characterName}</span>
                         <span>{chat.messages.length} messages</span>
                         <span>{formatDate(chat.updatedAt)}</span>
@@ -86,16 +86,16 @@ export function ChatModal({ onClose, onLoad }: ChatModalProps) {
                   )}
                 </div>
                 <div className="flex items-center gap-2 shrink-0 ml-3">
-                  <button onClick={() => onLoad(chat.id)} className="rune-button text-xs px-2 py-1">Load</button>
+                  <button onClick={() => onLoad(chat.id)} className="rune-button text-xs px-2 py-1">进入</button>
                   {renamingId !== chat.id && (
                     <>
                       <button
                         onClick={() => { setRenamingId(chat.id); setRenameValue(chat.name); }}
                         className="rune-button text-xs px-2 py-1"
                       >
-                        Rename
+                        改名
                       </button>
-                      <button onClick={() => handleDelete(chat.id)} className="ember-button text-xs px-2 py-1">Delete</button>
+                      <button onClick={() => handleDelete(chat.id)} className="ember-button text-xs px-2 py-1">删除</button>
                     </>
                   )}
                 </div>

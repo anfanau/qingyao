@@ -14,7 +14,7 @@ export function EntryForm({ entry, onChange }: EntryFormProps) {
     <div className="entry-form space-y-4">
       {/* Keys */}
       <div>
-        <label className="block text-xs font-ui text-faded-ink mb-1">Keys (comma-separated)</label>
+        <label className="block text-xs font-ui text-mist-gray mb-1">Keys (comma-separated)</label>
         <input
           type="text"
           value={entry.keys.join(', ')}
@@ -26,7 +26,7 @@ export function EntryForm({ entry, onChange }: EntryFormProps) {
 
       {/* Secondary Keys */}
       <div>
-        <label className="block text-xs font-ui text-faded-ink mb-1">Secondary Keys (comma-separated)</label>
+        <label className="block text-xs font-ui text-mist-gray mb-1">Secondary Keys (comma-separated)</label>
         <input
           type="text"
           value={entry.secondaryKeys.join(', ')}
@@ -38,7 +38,7 @@ export function EntryForm({ entry, onChange }: EntryFormProps) {
 
       {/* Content */}
       <div>
-        <label className="block text-xs font-ui text-faded-ink mb-1">Content</label>
+        <label className="block text-xs font-ui text-mist-gray mb-1">Content</label>
         <textarea
           value={entry.content}
           onChange={(e) => updateField('content', e.target.value)}
@@ -50,7 +50,7 @@ export function EntryForm({ entry, onChange }: EntryFormProps) {
       {/* Core fields row */}
       <div className="grid grid-cols-3 gap-3">
         <div>
-          <label className="block text-xs font-ui text-faded-ink mb-1">Priority</label>
+          <label className="block text-xs font-ui text-mist-gray mb-1">Priority</label>
           <input
             type="number"
             value={entry.priority}
@@ -59,7 +59,7 @@ export function EntryForm({ entry, onChange }: EntryFormProps) {
           />
         </div>
         <div>
-          <label className="block text-xs font-ui text-faded-ink mb-1">Position</label>
+          <label className="block text-xs font-ui text-mist-gray mb-1">Position</label>
           <select
             value={entry.position}
             onChange={(e) => updateField('position', e.target.value as LorebookEntry['position'])}
@@ -72,7 +72,7 @@ export function EntryForm({ entry, onChange }: EntryFormProps) {
           </select>
         </div>
         <div>
-          <label className="block text-xs font-ui text-faded-ink mb-1">Probability (%)</label>
+          <label className="block text-xs font-ui text-mist-gray mb-1">Probability (%)</label>
           <input
             type="range"
             min={0}
@@ -80,51 +80,51 @@ export function EntryForm({ entry, onChange }: EntryFormProps) {
             value={entry.probability}
             onChange={(e) => updateField('probability', Number(e.target.value))}
             disabled={!entry.useProbability}
-            className="w-full accent-arcane-gold"
+            className="w-full accent-celestial-gold"
           />
-          <span className="text-xs text-faded-ink">{entry.probability}%</span>
+          <span className="text-xs text-mist-gray">{entry.probability}%</span>
         </div>
       </div>
 
       {/* Toggles */}
       <div className="flex flex-wrap gap-4">
-        <label className="flex items-center gap-2 text-xs font-ui text-faded-ink cursor-pointer">
+        <label className="flex items-center gap-2 text-xs font-ui text-mist-gray cursor-pointer">
           <input
             type="checkbox"
             checked={entry.enabled}
             onChange={(e) => updateField('enabled', e.target.checked)}
-            className="accent-arcane-gold"
+            className="accent-celestial-gold"
           />
           Enabled
         </label>
-        <label className="flex items-center gap-2 text-xs font-ui text-faded-ink cursor-pointer">
+        <label className="flex items-center gap-2 text-xs font-ui text-mist-gray cursor-pointer">
           <input
             type="checkbox"
             checked={entry.constant}
             onChange={(e) => updateField('constant', e.target.checked)}
-            className="accent-arcane-gold"
+            className="accent-celestial-gold"
           />
           Constant
         </label>
-        <label className="flex items-center gap-2 text-xs font-ui text-faded-ink cursor-pointer">
+        <label className="flex items-center gap-2 text-xs font-ui text-mist-gray cursor-pointer">
           <input
             type="checkbox"
             checked={entry.useProbability}
             onChange={(e) => updateField('useProbability', e.target.checked)}
-            className="accent-arcane-gold"
+            className="accent-celestial-gold"
           />
           Use Probability
         </label>
       </div>
 
       {/* Advanced fields */}
-      <details className="border border-aged-leather/30 rounded p-3">
-        <summary className="text-xs font-ui text-faded-ink cursor-pointer hover:text-parchment">
+      <details className="border border-faded-gold/30 rounded p-3">
+        <summary className="text-xs font-ui text-mist-gray cursor-pointer hover:text-scroll-white">
           Advanced Settings
         </summary>
         <div className="mt-3 space-y-3">
           <div>
-            <label className="block text-xs font-ui text-faded-ink mb-1">Selective Logic</label>
+            <label className="block text-xs font-ui text-mist-gray mb-1">Selective Logic</label>
             <select
               value={entry.selectiveLogic}
               onChange={(e) => updateField('selectiveLogic', e.target.value as LorebookEntry['selectiveLogic'])}
@@ -137,21 +137,21 @@ export function EntryForm({ entry, onChange }: EntryFormProps) {
             </select>
           </div>
           <div className="flex gap-4">
-            <label className="flex items-center gap-2 text-xs font-ui text-faded-ink cursor-pointer">
+            <label className="flex items-center gap-2 text-xs font-ui text-mist-gray cursor-pointer">
               <input
                 type="checkbox"
                 checked={entry.caseSensitive}
                 onChange={(e) => updateField('caseSensitive', e.target.checked)}
-                className="accent-arcane-gold"
+                className="accent-celestial-gold"
               />
               Case Sensitive
             </label>
-            <label className="flex items-center gap-2 text-xs font-ui text-faded-ink cursor-pointer">
+            <label className="flex items-center gap-2 text-xs font-ui text-mist-gray cursor-pointer">
               <input
                 type="checkbox"
                 checked={entry.matchWholeWords}
                 onChange={(e) => updateField('matchWholeWords', e.target.checked)}
-                className="accent-arcane-gold"
+                className="accent-celestial-gold"
               />
               Match Whole Words
             </label>

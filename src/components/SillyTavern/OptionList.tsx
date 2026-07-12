@@ -24,7 +24,7 @@ export function OptionList({ options, onSelect, onCustomInput, disabled }: Optio
   };
 
   return (
-    <div className="option-list px-4 py-3 border-t border-aged-leather/30">
+    <div className="option-list px-4 py-3 border-t border-faded-gold/30">
       {options.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-3">
           {options.map((opt, i) => (
@@ -47,21 +47,21 @@ export function OptionList({ options, onSelect, onCustomInput, disabled }: Optio
             value={customInput}
             onChange={(e) => setCustomInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleCustomSubmit()}
-            placeholder="What do you do?"
+            placeholder="有何打算？"
             disabled={disabled}
             className="input-field flex-1"
             autoFocus
           />
-          <button onClick={handleCustomSubmit} disabled={disabled} className="rune-button">Act</button>
-          <button onClick={() => setShowCustom(false)} className="ember-button">Cancel</button>
+          <button onClick={handleCustomSubmit} disabled={disabled} className="rune-button">禀报</button>
+          <button onClick={() => setShowCustom(false)} className="ember-button">取消</button>
         </div>
       ) : (
         <button
           onClick={() => setShowCustom(true)}
           disabled={disabled}
-          className="text-sm font-ui text-faded-ink hover:text-parchment transition-colors"
+          className="text-sm font-ui text-mist-gray hover:text-scroll-white transition-colors"
         >
-          + Custom action...
+          + 自定义...
         </button>
       )}
     </div>
