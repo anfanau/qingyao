@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { X } from 'lucide-react';
 import { useSillytavern } from '../../hooks/useSillytavern';
 import type { AppSettings } from '../../sillytavern/types';
 
@@ -64,7 +65,7 @@ export function SettingsModal({ onClose }: SettingsModalProps) {
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-3 border-b border-faded-gold/30">
           <h2 className="font-title text-lg text-celestial-gold">设置</h2>
-          <button onClick={onClose} className="text-mist-gray hover:text-scroll-white text-lg">{'✕'}</button>
+          <button onClick={onClose} className="text-mist-gray hover:text-scroll-white"><X size={18} /></button>
         </div>
 
         {/* Tabs */}

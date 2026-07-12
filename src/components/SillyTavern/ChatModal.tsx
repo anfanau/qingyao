@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { X } from 'lucide-react';
 import { useSillytavern } from '../../hooks/useSillytavern';
 
 interface ChatModalProps {
@@ -44,8 +45,8 @@ export function ChatModal({ onClose, onLoad }: ChatModalProps) {
       <div className="modal-panel p-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
-          <h2 className="font-title text-lg text-celestial-gold">论道纪要</h2>
-          <button onClick={onClose} className="text-mist-gray hover:text-scroll-white text-lg">{'✕'}</button>
+          <h2 className="font-title text-lg text-celestial-gold">修炼历程</h2>
+          <button onClick={onClose} className="text-mist-gray hover:text-scroll-white"><X size={18} /></button>
         </div>
 
         {/* New Game */}
