@@ -109,6 +109,17 @@
     scrollbar-width: thin;
     scrollbar-color: #2d2418 #1a1410;
   }
+
+  /* Keyframes used by component animations */
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
 }
 
 /* ============================================================
