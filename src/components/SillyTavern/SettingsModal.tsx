@@ -3,7 +3,7 @@ import { X, Copy, Check, Loader2, RefreshCw, ChevronDown } from 'lucide-react';
 import { useSillytavern } from '../../hooks/useSillytavern';
 import type { AppSettings } from '../../sillytavern/types';
 import { detectProvider } from '../../sillytavern/types';
-import { fetchModels } from '../../sillytavern/providers';
+import { fetchModels, getAdapter } from '../../sillytavern/providers';
 
 interface SettingsModalProps {
   onClose: () => void;
@@ -119,7 +119,6 @@ export function SettingsModal({ onClose }: SettingsModalProps) {
 
   const testConnection = useCallback(async (tier: 'primary' | 'secondary') => {
     const config = settings.api[tier];
-    const { getAdapter } = await import('../../sillytavern/providers');
     const adapter = getAdapter(config.provider);
     const setStatus = tier === 'primary' ? setPrimaryStatus : setSecondaryStatus;
     const setError = tier === 'primary' ? setPrimaryError : setSecondaryError;
@@ -168,7 +167,10 @@ export function SettingsModal({ onClose }: SettingsModalProps) {
 
   const handleCopyUrl = async (tier: 'primary' | 'secondary') => {
     const config = settings.api[tier];
-    const url = `${config.baseUrl.replace(/\/+$/, '')}/chat/completions`;
+    const url = getAdapter(config.provider).buildUrl({
+      baseUrl: config.baseUrl,
+      model: config.model || 'local-model',
+    });
     try {
       await navigator.clipboard.writeText(url);
       setCopied(true);
@@ -194,7 +196,10 @@ export function SettingsModal({ onClose }: SettingsModalProps) {
     const status = tier === 'primary' ? primaryStatus : secondaryStatus;
     const error = tier === 'primary' ? primaryError : secondaryError;
     const tierLabel = tier === 'primary' ? 'Primary' : 'Secondary';
-    const endpointUrl = `${config.baseUrl.replace(/\/+$/, '')}/chat/completions`;
+    const endpointUrl = getAdapter(config.provider).buildUrl({
+      baseUrl: config.baseUrl,
+      model: config.model || 'local-model',
+    });
 
     return (
       <div className="space-y-4">

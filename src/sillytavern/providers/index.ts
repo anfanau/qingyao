@@ -1,16 +1,15 @@
 import type { ApiProvider } from '../types';
 import type { ProviderAdapter } from './types';
+import { OpenAICompatibleAdapter } from './openai';
+import { GeminiAdapter } from './gemini';
 
-const adapters: Partial<Record<ApiProvider, ProviderAdapter>> = {};
-
-export function registerAdapter(provider: ApiProvider, adapter: ProviderAdapter): void {
-  adapters[provider] = adapter;
-}
+const adapters: Record<ApiProvider, ProviderAdapter> = {
+  'openai-compatible': new OpenAICompatibleAdapter(),
+  gemini: new GeminiAdapter(),
+};
 
 export function getAdapter(provider: ApiProvider): ProviderAdapter {
-  const a = adapters[provider];
-  if (!a) throw new Error(`No adapter registered for provider: ${provider}`);
-  return a;
+  return adapters[provider];
 }
 
 export async function fetchModels(
@@ -20,9 +19,3 @@ export async function fetchModels(
 ): Promise<string[]> {
   return getAdapter(provider).listModels(baseUrl, apiKey);
 }
-
-import { OpenAICompatibleAdapter } from './openai';
-registerAdapter('openai-compatible', new OpenAICompatibleAdapter());
-
-import { GeminiAdapter } from './gemini';
-registerAdapter('gemini', new GeminiAdapter());

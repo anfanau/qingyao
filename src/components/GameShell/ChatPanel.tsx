@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useSillytavern } from '../../hooks/useSillytavern';
 import { useToast } from '../Cultivation/Toast';
-import { Send, AlertTriangle, Sparkles } from 'lucide-react';
+import { Send, AlertTriangle, Sparkles, X } from 'lucide-react';
 
 interface ChatPanelProps {
   sectName: string;
@@ -11,6 +11,7 @@ interface ChatPanelProps {
 export function ChatPanel({ sectName, subsectName }: ChatPanelProps) {
   const { activeChat, isSending, sendMessage, lastError, settings } = useSillytavern();
   const [input, setInput] = useState('');
+  const [dismissedError, setDismissedError] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const { addToast } = useToast();
@@ -18,6 +19,13 @@ export function ChatPanel({ sectName, subsectName }: ChatPanelProps) {
   useEffect(() => {
     if (lastError) addToast(lastError, 'error');
   }, [lastError, addToast]);
+
+  // Reset dismissed error when lastError changes
+  useEffect(() => {
+    if (lastError && lastError !== dismissedError) {
+      setDismissedError(null);
+    }
+  }, [lastError]);
 
   const hasApiConfig = settings?.api?.primary?.baseUrl && settings.api.primary.baseUrl !== 'http://localhost:1234/v1';
 
@@ -145,6 +153,21 @@ export function ChatPanel({ sectName, subsectName }: ChatPanelProps) {
 
         <div ref={messagesEndRef} />
       </div>
+
+      {/* Inline error banner */}
+      {lastError && lastError !== dismissedError && (
+        <div className="mx-4 mt-3 px-3 py-2 rounded-lg bg-fire-vein/10 border border-fire-vein/25 flex items-start gap-2.5 animate-fade-in">
+          <AlertTriangle size={14} className="text-fire-vein shrink-0 mt-0.5" />
+          <p className="text-xs text-fire-vein/90 font-ui flex-1 leading-relaxed">{lastError}</p>
+          <button
+            onClick={() => setDismissedError(lastError)}
+            className="text-fire-vein/50 hover:text-fire-vein shrink-0"
+            title="关闭"
+          >
+            <X size={13} />
+          </button>
+        </div>
+      )}
 
       {/* Input area */}
       <div className="border-t border-faded-gold/20 bg-mystic-azure/50 p-3 shrink-0">

@@ -27,7 +27,7 @@ const DEFAULT_PRESET_SETTINGS: PresetSettings = {
 };
 
 export function PresetModal({ onClose }: PresetModalProps) {
-  const { presets, activeChat, savePresetById } = useSillytavern();
+  const { presets, activeChat, savePresetById, deletePresetById } = useSillytavern();
   const [activeTab, setActiveTab] = useState<TabName>('sampling');
   const [selectedPresetId, setSelectedPresetId] = useState<string | null>(
     activeChat?.presetId ?? (presets[0]?.id ?? null)
@@ -70,10 +70,9 @@ export function PresetModal({ onClose }: PresetModalProps) {
   const handleDeletePreset = async () => {
     if (!selectedPresetId) return;
     if (!window.confirm('Delete this preset?')) return;
-    const { deletePresetById } = useSillytavern();
-    // We can't call another hook, so use deletePresetById from the hook return
-    // Actually we already have it from useSillytavern above — let me restructure
-    onClose(); // close modal; caller can reset state if needed
+    await deletePresetById(selectedPresetId);
+    setSelectedPresetId(null);
+    onClose();
   };
 
   const tabs: { key: TabName; label: string }[] = [

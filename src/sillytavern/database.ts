@@ -23,8 +23,8 @@ const DEFAULT_PRESET: ChatPreset = {
     assistant_prompt_template: '{{char}}',
     custom_prompts: [],
     prompt_order: [
-      { id: 'system', name: '系统提示', enabled: true, sortOrder: 0, isCustom: false, templateKey: 'system' },
-      { id: 'character', name: '角色设定', enabled: true, sortOrder: 1, isCustom: false, templateKey: 'character' },
+      { id: 'system', name: '系统提示', enabled: true, sortOrder: 0, isCustom: false, templateKey: 'system_prompt' },
+      { id: 'character', name: '角色设定', enabled: true, sortOrder: 1, isCustom: false, templateKey: 'character_prompt' },
       { id: 'history', name: '对话历史', enabled: true, sortOrder: 2, isCustom: false, templateKey: 'history' },
       { id: 'user-input', name: '用户输入', enabled: true, sortOrder: 3, isCustom: false, templateKey: 'user-input' },
     ],

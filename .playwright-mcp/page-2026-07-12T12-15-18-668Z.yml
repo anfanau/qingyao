@@ -1,0 +1,21 @@
+- generic [ref=e18]:
+  - generic [ref=e19]:
+    - heading "仙途" [level=1] [ref=e20]
+    - generic [ref=e21]:
+      - button "修炼历程" [ref=e22] [cursor=pointer]
+      - button "典籍" [ref=e27] [cursor=pointer]
+      - button "法门" [ref=e30] [cursor=pointer]
+      - button "设置" [ref=e34] [cursor=pointer]
+  - generic [ref=e38]:
+    - paragraph [ref=e41]: 点击轨道上的宗门以查看详情
+    - generic [ref=e42]:
+      - generic [ref=e44] [cursor=pointer]: 青云门
+      - generic [ref=e51] [cursor=pointer]: 琉璃宫
+      - generic [ref=e58] [cursor=pointer]: 焚香谷
+      - generic [ref=e64] [cursor=pointer]: 蜀山剑派
+      - generic [ref=e77] [cursor=pointer]: 玄天宗
+      - generic [ref=e84] [cursor=pointer]: 药王谷
+      - generic [ref=e91] [cursor=pointer]: 天魔宗
+      - generic [ref=e97] [cursor=pointer]: 合欢派
+      - generic [ref=e106] [cursor=pointer]: 阴煞宗
+      - generic [ref=e112] [cursor=pointer]: 青曜

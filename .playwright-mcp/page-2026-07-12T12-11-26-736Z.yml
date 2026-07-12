@@ -1,0 +1,57 @@
+- generic [ref=e2]:
+  - generic [ref=e17]:
+    - generic [ref=e18]:
+      - heading "仙途" [level=1] [ref=e19]
+      - generic [ref=e20]:
+        - button "修炼历程" [ref=e21] [cursor=pointer]
+        - button "典籍" [ref=e26] [cursor=pointer]
+        - button "法门" [ref=e29] [cursor=pointer]
+        - button "设置" [ref=e33] [cursor=pointer]
+    - generic [ref=e37]:
+      - paragraph [ref=e40]: 点击轨道上的宗门以查看详情
+      - generic [ref=e41]:
+        - generic [ref=e43] [cursor=pointer]: 青云门
+        - generic [ref=e50] [cursor=pointer]: 琉璃宫
+        - generic [ref=e57] [cursor=pointer]: 焚香谷
+        - generic [ref=e63] [cursor=pointer]: 蜀山剑派
+        - generic [ref=e76] [cursor=pointer]: 玄天宗
+        - generic [ref=e83] [cursor=pointer]: 药王谷
+        - generic [ref=e90] [cursor=pointer]: 天魔宗
+        - generic [ref=e96] [cursor=pointer]: 合欢派
+        - generic [ref=e105] [cursor=pointer]: 阴煞宗
+        - generic [ref=e111] [cursor=pointer]: 青曜
+  - generic [ref=e117]:
+    - generic [ref=e118]:
+      - heading "设置" [level=2] [ref=e119]
+      - button [ref=e120] [cursor=pointer]
+    - generic [ref=e124]:
+      - button "角色" [ref=e125] [cursor=pointer]
+      - button "Primary API" [ref=e126] [cursor=pointer]
+      - button "Secondary API" [ref=e127] [cursor=pointer]
+      - button "UI" [ref=e128] [cursor=pointer]
+      - button "初始" [ref=e129] [cursor=pointer]
+    - generic [ref=e168]:
+      - generic [ref=e169]:
+        - generic [ref=e170]: 快速设置
+        - generic [ref=e171]:
+          - button "Ollama" [ref=e172] [cursor=pointer]
+          - button "LM Studio" [ref=e173] [cursor=pointer]
+          - button "OpenAI" [active] [ref=e174] [cursor=pointer]
+          - button "OpenRouter" [ref=e175] [cursor=pointer]
+      - generic [ref=e176]:
+        - generic [ref=e177]: Base URL
+        - textbox "http://localhost:1234/v1" [ref=e178]: https://api.openai.com/v1
+      - generic [ref=e179]:
+        - generic [ref=e180]: 接口地址
+        - generic [ref=e181]:
+          - textbox [ref=e182]: https://api.openai.com/v1/chat/completions
+          - button "复制" [ref=e183] [cursor=pointer]
+      - generic [ref=e187]:
+        - generic [ref=e188]: API Key
+        - textbox [ref=e189]
+      - generic [ref=e190]:
+        - generic [ref=e191]: Model
+        - textbox "local-model" [ref=e192]
+      - generic [ref=e194]:
+        - button "检测连接" [ref=e195] [cursor=pointer]
+        - generic [ref=e196]: 未检测

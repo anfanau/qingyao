@@ -37,15 +37,20 @@ export function assemblePrompt(opts: AssembleOpts): AssembleResult {
     let content = '';
     if (item.templateKey) {
       switch (item.templateKey) {
-        case 'system_prompt': content = sub(s.system_prompt); break;
+        case 'system_prompt':
+        case 'system': // backward compatibility — old preset key
+          content = sub(s.system_prompt); break;
         case 'jailbreak_prompt': content = sub(s.jailbreak_prompt); break;
         case 'character_prompt':
+        case 'character': // backward compatibility — old preset key
           content = sub(s.character_prompt)
             .replace(/\{\{char\}\}/g, characterName)
             .replace(/\{\{user\}\}/g, userName);
           break;
         case 'user_prompt_template': break; // handled per user message
         case 'assistant_prompt_template': break; // handled per assistant message
+        case 'history': break; // positional marker — handled by history loop below
+        case 'user-input': break; // positional marker — handled by final input push below
       }
     } else if (item.isCustom && item.customContent) {
       content = sub(item.customContent);

@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useGameState } from './hooks/useGameState';
-import { useSillytavern } from './hooks/useSillytavern';
+import { useSillytavern, SillyTavernProvider } from './hooks/useSillytavern';
 import type { PlayerData } from './types/game';
 
 // Views
@@ -195,7 +195,9 @@ function AppContent() {
 export default function App() {
   return (
     <ToastProvider>
-      <AppContent />
+      <SillyTavernProvider>
+        <AppContent />
+      </SillyTavernProvider>
     </ToastProvider>
   );
 }
