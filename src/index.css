@@ -358,3 +358,159 @@
     box-shadow: 0 0 6px rgba(30, 58, 95, 0.4);
   }
 }
+
+/* ============================================================
+   Keyframes — Splash & Orbit Animations
+   ============================================================ */
+
+@keyframes breathGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 20px rgba(212, 168, 67, 0.3),
+      0 0 60px rgba(212, 168, 67, 0.15);
+  }
+  50% {
+    box-shadow:
+      0 0 35px rgba(212, 168, 67, 0.5),
+      0 0 80px rgba(212, 168, 67, 0.25);
+  }
+}
+
+@keyframes breathText {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+@keyframes whiteFlash {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes titleEnter {
+  0% { opacity: 0; transform: scale(0.3); filter: blur(20px); }
+  60% { opacity: 1; transform: scale(1.05); filter: blur(0); }
+  100% { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+@keyframes orbitClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbitCounterClockwise {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes aetherPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 15px rgba(212, 168, 67, 0.4),
+      0 0 40px rgba(34, 211, 238, 0.15),
+      0 0 80px rgba(212, 168, 67, 0.05);
+  }
+  50% {
+    box-shadow:
+      0 0 25px rgba(212, 168, 67, 0.6),
+      0 0 60px rgba(34, 211, 238, 0.3),
+      0 0 120px rgba(212, 168, 67, 0.1);
+  }
+}
+
+@keyframes toastSlideIn {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes toastSlideOut {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(40px) translateY(-10px); }
+}
+
+@keyframes toastProgress {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+@keyframes titleParticleFloat {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+}
+
+/* ============================================================
+   Component Utility Classes
+   ============================================================ */
+
+@layer components {
+  .animate-breath-glow {
+    animation: breathGlow 3s ease-in-out infinite;
+  }
+
+  .animate-breath-text {
+    animation: breathText 2.5s ease-in-out infinite;
+  }
+
+  .animate-orbit-60 {
+    animation: orbitClockwise 60s linear infinite;
+  }
+
+  .animate-orbit-80 {
+    animation: orbitCounterClockwise 80s linear infinite;
+  }
+
+  .animate-aether-pulse {
+    animation: aetherPulse 4s ease-in-out infinite;
+  }
+
+  .star-particle {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--star-color, #ffffff);
+    width: var(--star-size, 2px);
+    height: var(--star-size, 2px);
+    left: var(--star-x, 50%);
+    top: var(--star-y, 50%);
+    animation: starTwinkle var(--star-duration, 3s) ease-in-out infinite;
+    animation-delay: var(--star-delay, 0s);
+    pointer-events: none;
+    will-change: opacity, transform;
+  }
+
+  .perspective-container {
+    perspective: 1200px;
+  }
+
+  .door-leaf {
+    position: absolute;
+    top: 50%;
+    width: 30vw;
+    height: 65vh;
+    transform-origin: center center;
+    transition: transform 1.2s cubic-bezier(0.87, 0, 0.13, 1);
+  }
+
+  .door-left {
+    left: calc(50% - 30vw);
+    transform: translateY(-50%) rotateY(0deg);
+  }
+
+  .door-right {
+    right: calc(50% - 30vw);
+    transform: translateY(-50%) rotateY(0deg);
+  }
+
+  .door-left.open {
+    transform: translateY(-50%) rotateY(-110deg);
+  }
+
+  .door-right.open {
+    transform: translateY(-50%) rotateY(110deg);
+  }
+}
