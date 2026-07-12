@@ -1,0 +1,69 @@
+- generic [ref=f1e2]:
+  - generic [ref=f1e117]:
+    - generic [ref=f1e118]:
+      - button "返回" [ref=f1e119] [cursor=pointer]
+      - heading "青云门" [level=1] [ref=f1e123]
+      - generic [ref=f1e124]: 正道
+    - generic [ref=f1e125]:
+      - generic [ref=f1e127]:
+        - heading "青云门" [level=2] [ref=f1e133]
+        - paragraph [ref=f1e134]: 天下正道之首，主修太极玄清道，剑法通神，御雷而行。
+      - generic:
+        - generic [ref=f1e135] [cursor=pointer]:
+          - generic [ref=f1e136]: 天
+          - generic [ref=f1e139]: 天枢宗
+        - generic [ref=f1e140] [cursor=pointer]:
+          - generic [ref=f1e141]: 落
+          - generic [ref=f1e144]: 落霞宗
+        - generic [ref=f1e145] [cursor=pointer]:
+          - generic [ref=f1e146]: 凌
+          - generic [ref=f1e149]: 凌云宗
+  - generic [ref=f1e150]:
+    - generic [ref=f1e152]:
+      - button "返回" [ref=f1e153] [cursor=pointer]
+      - heading "踏入仙途" [level=1] [ref=f1e157]
+    - generic [ref=f1e158]:
+      - generic [ref=f1e159]: 门派出身
+      - generic [ref=f1e164]: 灵根测试
+      - generic [ref=f1e169]: 基础信息
+      - generic [ref=f1e174]: 确认入道
+    - generic [ref=f1e179]:
+      - paragraph [ref=f1e180]: 选择你出身的宗门，影响初始功法和属性倾向
+      - generic [ref=f1e181]:
+        - button [ref=f1e182] [cursor=pointer]:
+          - generic [ref=f1e184]:
+            - heading "青云门" [level=3] [ref=f1e188]
+            - text: 正道
+        - button [ref=f1e189] [cursor=pointer]:
+          - generic [ref=f1e191]:
+            - heading "琉璃宫" [level=3] [ref=f1e195]
+            - text: 正道
+        - button [ref=f1e196] [cursor=pointer]:
+          - generic [ref=f1e198]:
+            - heading "焚香谷" [level=3] [ref=f1e201]
+            - text: 正道
+        - button [ref=f1e202] [cursor=pointer]:
+          - generic [ref=f1e204]:
+            - heading "蜀山剑派" [level=3] [ref=f1e214]
+            - text: 正道
+        - button [ref=f1e215] [cursor=pointer]:
+          - generic [ref=f1e217]:
+            - heading "玄天宗" [level=3] [ref=f1e221]
+            - text: 正道
+        - button [ref=f1e222] [cursor=pointer]:
+          - generic [ref=f1e224]:
+            - heading "药王谷" [level=3] [ref=f1e228]
+            - text: 正道
+        - button [ref=f1e229] [cursor=pointer]:
+          - generic [ref=f1e231]:
+            - heading "天魔宗" [level=3] [ref=f1e234]
+            - text: 邪道
+        - button [ref=f1e235] [cursor=pointer]:
+          - generic [ref=f1e237]:
+            - heading "合欢派" [level=3] [ref=f1e243]
+            - text: 邪道
+        - button [ref=f1e244] [cursor=pointer]:
+          - generic [ref=f1e246]:
+            - heading "阴煞宗" [level=3] [ref=f1e249]
+            - text: 邪道
+    - button "下一步" [ref=f1e251] [cursor=pointer]

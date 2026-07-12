@@ -444,6 +444,11 @@
   100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
 }
 
+@keyframes titleGoldShimmer {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 0% 100%; }
+}
+
 /* ============================================================
    Component Utility Classes
    ============================================================ */
@@ -512,5 +517,11 @@
 
   .door-right.open {
     transform: translateY(-50%) rotateY(110deg);
+  }
+
+  .title-char {
+    display: inline-block;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.5);
+    paint-order: stroke fill;
   }
 }

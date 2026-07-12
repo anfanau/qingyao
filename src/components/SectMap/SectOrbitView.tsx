@@ -40,17 +40,18 @@ export function SectOrbitView({
         </div>
       </div>
 
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden min-h-0">
         <SectInfoPanel sect={displaySect} onEnterDetail={() => { if (hoveredSectId) onSelectSect(hoveredSectId); }} />
 
-        <div className="flex-1 relative flex items-center justify-center overflow-hidden">
+        <div className="flex-1 relative flex items-center justify-center overflow-hidden min-w-0">
           <StarField count={60} />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(30,20,50,0.4)_0%,transparent_60%)]" />
 
           <OrbitRing radius={ORBIT_RADIUS} color="gold" animationClass="animate-orbit-60" />
           <OrbitRing radius={ORBIT_RADIUS + 30} color="cyan" animationClass="animate-orbit-80" />
 
-          <div className="absolute animate-orbit-60" style={{ left: '50%', top: '50%', width: 0, height: 0 }}>
+          {/* Static node container — nodes are positioned in a circle, not rotating */}
+          <div className="absolute" style={{ left: '50%', top: '50%', width: 0, height: 0 }}>
             {SECTS_DATA.map((sect, i) => {
               const angle = (360 / SECTS_DATA.length) * i;
               return (

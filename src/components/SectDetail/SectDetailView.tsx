@@ -68,7 +68,7 @@ export function SectDetailView({ sectId, onBack, onEnterSubsect }: SectDetailVie
           <p className="mt-1 text-sm font-body text-mist-gray/70 text-center max-w-xs leading-relaxed">{sect.desc}</p>
         </div>
 
-        <div className="absolute animate-orbit-60" style={{ width: 0, height: 0, left: '50%', top: '50%' }}>
+        <div className="absolute" style={{ width: 0, height: 0, left: '50%', top: '50%' }}>
           {sect.subs.map((sub, i) => {
             const angle = (360 / sect.subs.length) * i - 90;
             return (

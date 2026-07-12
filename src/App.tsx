@@ -147,6 +147,7 @@ function AppContent() {
           player={state.player}
           onTabChange={actions.setSidebarTab}
           onExit={handleExitGame}
+          onOpenSettings={() => actions.setModal('settings')}
         />
       )}
 

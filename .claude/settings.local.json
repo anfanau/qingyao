@@ -34,7 +34,12 @@
       "Bash(bash \"C:\\\\Users\\\\Administrator\\\\.claude\\\\plugins\\\\cache\\\\claude-plugins-official\\\\superpowers\\\\6.1.1\\\\skills\\\\subagent-driven-development\\\\scripts\\\\review-package\" a8e8bc0 0930011)",
       "Bash(bash \"C:\\\\Users\\\\Administrator\\\\.claude\\\\plugins\\\\cache\\\\claude-plugins-official\\\\superpowers\\\\6.1.1\\\\skills\\\\subagent-driven-development\\\\scripts\\\\review-package\" 0930011 17e9f49)",
       "Bash(bash \"C:\\\\Users\\\\Administrator\\\\.claude\\\\plugins\\\\cache\\\\claude-plugins-official\\\\superpowers\\\\6.1.1\\\\skills\\\\subagent-driven-development\\\\scripts\\\\review-package\" 17e9f49 8e62fe1)",
-      "Bash(bash \"C:\\\\Users\\\\Administrator\\\\.claude\\\\plugins\\\\cache\\\\claude-plugins-official\\\\superpowers\\\\6.1.1\\\\skills\\\\subagent-driven-development\\\\scripts\\\\review-package\" 8e62fe1 HEAD)"
+      "Bash(bash \"C:\\\\Users\\\\Administrator\\\\.claude\\\\plugins\\\\cache\\\\claude-plugins-official\\\\superpowers\\\\6.1.1\\\\skills\\\\subagent-driven-development\\\\scripts\\\\review-package\" 8e62fe1 HEAD)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_console_messages",
+      "mcp__plugin_playwright_playwright__browser_snapshot",
+      "mcp__plugin_playwright_playwright__browser_click"
     ]
   }
 }

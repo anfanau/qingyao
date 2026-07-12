@@ -159,35 +159,77 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
         />
       )}
 
-      {/* SVG Title */}
+      {/* CSS Title — HTML text with gold gradient + white stroke + glow */}
       {phase === 'title' && (
         <div
-          className="absolute inset-0 flex items-center justify-center z-40 pointer-events-none"
+          className="absolute inset-0 flex items-center justify-center gap-4 z-40 pointer-events-none"
           style={{ animation: 'titleEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards' }}
         >
-          <svg viewBox="0 0 400 200" height="40vh" style={{ filter: 'url(#gold-glow-splash)' }}>
+          {/* SVG glow filter (hidden, used via CSS filter url) */}
+          <svg width="0" height="0" className="absolute">
             <defs>
-              <linearGradient id="gold-gradient-title" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#b8860b" />
-                <stop offset="30%" stopColor="#f5d78a" />
-                <stop offset="50%" stopColor="#d4a843" />
-                <stop offset="70%" stopColor="#f5d78a" />
-                <stop offset="100%" stopColor="#b8860b" />
-                <animateTransform attributeName="gradientTransform" type="translate" from="-1 0" to="1 0" dur="3s" repeatCount="indefinite" />
-              </linearGradient>
-              <filter id="gold-glow-splash" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur1" />
+              <filter id="gold-glow-splash" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur2" />
                 <feMerge>
                   <feMergeNode in="blur2" />
-                  <feMergeNode in="blur1" />
                   <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
             </defs>
-            <text x="70" y="145" fontFamily="'ZCOOL XiaoWei','Ma Shan Zheng',serif" fontSize="160" fontWeight="bold" fill="url(#gold-gradient-title)" stroke="white" strokeWidth="2" paintOrder="stroke fill">仙</text>
-            <text x="210" y="145" fontFamily="'ZCOOL XiaoWei','Ma Shan Zheng',serif" fontSize="160" fontWeight="bold" fill="url(#gold-gradient-title)" stroke="white" strokeWidth="2" paintOrder="stroke fill">途</text>
           </svg>
+          <span
+            className="title-char"
+            style={{
+              fontFamily: "'KaiTi','STKaiti','SimKai','Noto Serif SC','ZCOOL XiaoWei','Ma Shan Zheng',serif",
+              fontSize: 'min(38vh, 260px)',
+              fontWeight: 900,
+              lineHeight: 1,
+              background: 'linear-gradient(180deg, #f5d78a 0%, #d4a843 30%, #b8860b 50%, #d4a843 70%, #f5d78a 100%)',
+              backgroundSize: '100% 200%',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent',
+              textShadow: `
+                -1px -1px 0 rgba(255,255,255,0.9),
+                1px -1px 0 rgba(255,255,255,0.9),
+                -1px 1px 0 rgba(255,255,255,0.9),
+                1px 1px 0 rgba(255,255,255,0.7),
+                0 0 20px rgba(212,168,67,0.6),
+                0 0 40px rgba(212,168,67,0.4)
+              `,
+              filter: 'url(#gold-glow-splash)',
+              animation: 'titleGoldShimmer 2.5s ease-in-out infinite',
+            } as React.CSSProperties}
+          >
+            仙
+          </span>
+          <span
+            className="title-char"
+            style={{
+              fontFamily: "'KaiTi','STKaiti','SimKai','Noto Serif SC','ZCOOL XiaoWei','Ma Shan Zheng',serif",
+              fontSize: 'min(38vh, 260px)',
+              fontWeight: 900,
+              lineHeight: 1,
+              background: 'linear-gradient(180deg, #f5d78a 0%, #d4a843 30%, #b8860b 50%, #d4a843 70%, #f5d78a 100%)',
+              backgroundSize: '100% 200%',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent',
+              textShadow: `
+                -1px -1px 0 rgba(255,255,255,0.9),
+                1px -1px 0 rgba(255,255,255,0.9),
+                -1px 1px 0 rgba(255,255,255,0.9),
+                1px 1px 0 rgba(255,255,255,0.7),
+                0 0 20px rgba(212,168,67,0.6),
+                0 0 40px rgba(212,168,67,0.4)
+              `,
+              filter: 'url(#gold-glow-splash)',
+              animation: 'titleGoldShimmer 2.5s ease-in-out infinite',
+              animationDelay: '0.3s',
+            } as React.CSSProperties}
+          >
+            途
+          </span>
         </div>
       )}
 

@@ -60,6 +60,7 @@ export interface UseSillytavernReturn {
   activeChat: ChatSession | null;
   isSending: boolean;
   isLoading: boolean;
+  lastError: string | null;
 
   // Settings
   loadAll: () => Promise<void>;
@@ -103,6 +104,7 @@ export function useSillytavern(): UseSillytavernReturn {
   const [activeChatId, setActiveChatId] = useState<string | null>(null);
   const [isSending, setIsSending] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [lastError, setLastError] = useState<string | null>(null);
 
   // Derived: active chat object
   const activeChat = useMemo<ChatSession | null>(() => {
@@ -195,7 +197,8 @@ export function useSillytavern(): UseSillytavernReturn {
       // 1. Find the active preset
       const activePreset = presets.find((p) => p.id === chat.presetId);
       if (!activePreset) {
-        console.warn('sendMessage: no active preset found');
+        setLastError('未找到对话预设，请先在"法门"中创建预设');
+        setIsSending(false);
         return;
       }
 
@@ -216,7 +219,8 @@ export function useSillytavern(): UseSillytavernReturn {
       // 4. Route API request
       const route = routeApi(curSettings, { userInput: content });
       if (!route) {
-        console.warn('sendMessage: no API route available');
+        setLastError('API 路由不可用，请检查设置中的 API 配置');
+        setIsSending(false);
         return;
       }
 
@@ -287,6 +291,8 @@ export function useSillytavern(): UseSillytavernReturn {
       setChats((prev) => prev.map((c) => (c.id === finalChat.id ? finalChat : c)));
     } catch (err) {
       console.error('sendMessage error:', err);
+      const msg = err instanceof Error ? err.message : '未知错误';
+      setLastError(`神识交流中断：${msg}。请检查 API 连接设置。`);
     } finally {
       setIsSending(false);
     }
@@ -530,6 +536,7 @@ export function useSillytavern(): UseSillytavernReturn {
     activeChat,
     isSending,
     isLoading,
+    lastError,
 
     // Settings
     loadAll,

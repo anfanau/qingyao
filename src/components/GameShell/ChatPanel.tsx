@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useSillytavern } from '../../hooks/useSillytavern';
-import { Send } from 'lucide-react';
+import { useToast } from '../Cultivation/Toast';
+import { Send, AlertTriangle } from 'lucide-react';
 
 interface ChatPanelProps {
   sectName: string;
@@ -8,9 +9,20 @@ interface ChatPanelProps {
 }
 
 export function ChatPanel({ sectName, subsectName }: ChatPanelProps) {
-  const { activeChat, isSending, sendMessage } = useSillytavern();
+  const { activeChat, isSending, sendMessage, lastError, settings } = useSillytavern();
   const [input, setInput] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const { addToast } = useToast();
+
+  // Show error as toast when lastError changes
+  useEffect(() => {
+    if (lastError) {
+      addToast(lastError, 'error');
+    }
+  }, [lastError, addToast]);
+
+  // Check if API is configured
+  const hasApiConfig = settings?.api?.primary?.baseUrl && settings.api.primary.baseUrl !== 'http://localhost:1234/v1';
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -41,6 +53,17 @@ export function ChatPanel({ sectName, subsectName }: ChatPanelProps) {
             </div>
             <p className="font-title text-xl text-celestial-gold/40 mb-2">神识连接已建立</p>
             <p className="text-sm text-mist-gray/50 font-body">与{subsectName}的长老建立心神联系...</p>
+            {!hasApiConfig && (
+              <div className="mt-4 px-4 py-3 rounded-lg border border-fire-vein/30 bg-fire-vein/5 max-w-sm">
+                <div className="flex items-center gap-2 mb-1">
+                  <AlertTriangle size={14} className="text-fire-vein" />
+                  <span className="text-xs font-ui text-fire-vein">API 未配置</span>
+                </div>
+                <p className="text-xs font-body text-mist-gray/60 leading-relaxed">
+                  请在设置中配置 API 连接地址和密钥，方可与天道沟通。
+                </p>
+              </div>
+            )}
           </div>
         )}
         {activeChat?.messages.map((msg) => {

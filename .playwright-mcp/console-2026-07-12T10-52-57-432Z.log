@@ -1,0 +1,71 @@
+[    1409ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:21550
+[    1555ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/favicon.ico:0
+[  391121ms] [ERROR] Warning: React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://reactjs.org/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+%s AppContent 1. useReducer                 useReducer
+2. useCallback                useCallback
+3. useCallback                useCallback
+4. useCallback                useCallback
+5. useCallback                useCallback
+6. useCallback                useCallback
+7. useCallback                useCallback
+8. useCallback                useCallback
+9. useCallback                useCallback
+10. useCallback               useCallback
+11. useCallback               useCallback
+12. useState                  useState
+13. useState                  useState
+14. useState                  useState
+15. useState                  useState
+16. useState                  useState
+17. useState                  useState
+18. useState                  useState
+19. useMemo                   useState
+ 
+    at AppContent (http://localhost:5173/src/App.tsx?t=1783853968493:34:30)
+    at ToastProvider (http://localhost:5173/src/components/Cultivation/Toast.tsx:74:33)
+    at App @ http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:520
+[  391122ms] Error: Should have a queue. This is likely a bug in React. Please file an issue.
+    at updateReducer (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:11730:19)
+    at updateState (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:12021:18)
+    at Object.useState (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:12753:24)
+    at useState (http://localhost:5173/node_modules/.vite/deps/chunk-DRWLMN53.js?v=772cf2e4:1066:29)
+    at useSillytavern (http://localhost:5173/src/hooks/useSillytavern.ts?t=1783853968493:31:37)
+    at AppContent (http://localhost:5173/src/App.tsx?t=1783853968493:39:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:11548:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:14582:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:15924:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:3674:22)
+[  391122ms] Error: Should have a queue. This is likely a bug in React. Please file an issue.
+    at updateReducer (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:11730:19)
+    at updateState (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:12021:18)
+    at Object.useState (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:12753:24)
+    at useState (http://localhost:5173/node_modules/.vite/deps/chunk-DRWLMN53.js?v=772cf2e4:1066:29)
+    at useSillytavern (http://localhost:5173/src/hooks/useSillytavern.ts?t=1783853968493:31:37)
+    at AppContent (http://localhost:5173/src/App.tsx?t=1783853968493:39:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:11548:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:14582:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:15924:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:3674:22)
+[  391123ms] [ERROR] The above error occurred in the <AppContent> component:
+
+    at AppContent (http://localhost:5173/src/App.tsx?t=1783853968493:34:30)
+    at ToastProvider (http://localhost:5173/src/components/Cultivation/Toast.tsx:74:33)
+    at App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:14031
+[  391123ms] Error: Should have a queue. This is likely a bug in React. Please file an issue.
+    at updateReducer (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:11730:19)
+    at updateState (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:12021:18)
+    at Object.useState (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:12753:24)
+    at useState (http://localhost:5173/node_modules/.vite/deps/chunk-DRWLMN53.js?v=772cf2e4:1066:29)
+    at useSillytavern (http://localhost:5173/src/hooks/useSillytavern.ts?t=1783853968493:31:37)
+    at AppContent (http://localhost:5173/src/App.tsx?t=1783853968493:39:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:11548:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:14582:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:15924:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=772cf2e4:19753:22)
