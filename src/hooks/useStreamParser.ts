@@ -1,5 +1,6 @@
 import { useRef, useCallback } from 'react';
 import { createStreamParser, streamFetch, type StreamCallbacks, type ParsedTags } from '../sillytavern';
+import type { ProviderAdapter } from '../sillytavern/providers/types';
 
 export function useStreamParser() {
   const abortRef = useRef<AbortController | null>(null);
@@ -9,10 +10,12 @@ export function useStreamParser() {
     body: any,
     apiKey: string,
     callbacks: StreamCallbacks,
+    adapter: ProviderAdapter,
   ): Promise<ParsedTags> => {
     abortRef.current = new AbortController();
     try {
-      return await streamFetch(url, body, { Authorization: `Bearer ${apiKey}` }, callbacks, abortRef.current.signal);
+      const headers = adapter.buildHeaders(apiKey);
+      return await streamFetch(url, body, headers, callbacks, adapter, abortRef.current.signal);
     } finally {
       abortRef.current = null;
     }

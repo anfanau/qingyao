@@ -1,10 +1,13 @@
 import type { AppSettings, ApiConfig } from './types';
+import type { ProviderAdapter } from './providers/types';
+import { getAdapter } from './providers/index';
 
 export type RouteTarget = 'primary' | 'secondary';
 
 export interface RouteDecision {
   target: RouteTarget;
   config: ApiConfig;
+  adapter: ProviderAdapter;
 }
 
 export function routeApi(
@@ -16,24 +19,22 @@ export function routeApi(
     (content.hasVarsTag || content.isSummary);
 
   if (useSecondary) {
-    return {
-      target: 'secondary',
-      config: {
-        baseUrl: settings.api.secondary.baseUrl,
-        apiKey: settings.api.secondary.apiKey,
-        model: settings.api.secondary.model,
-      },
+    const config: ApiConfig = {
+      baseUrl: settings.api.secondary.baseUrl,
+      apiKey: settings.api.secondary.apiKey,
+      model: settings.api.secondary.model,
+      provider: settings.api.secondary.provider,
     };
+    return { target: 'secondary', config, adapter: getAdapter(config.provider) };
   }
 
-  return {
-    target: 'primary',
-    config: {
-      baseUrl: settings.api.primary.baseUrl,
-      apiKey: settings.api.primary.apiKey,
-      model: settings.api.primary.model,
-    },
+  const config: ApiConfig = {
+    baseUrl: settings.api.primary.baseUrl,
+    apiKey: settings.api.primary.apiKey,
+    model: settings.api.primary.model,
+    provider: settings.api.primary.provider,
   };
+  return { target: 'primary', config, adapter: getAdapter(config.provider) };
 }
 
 export function buildRequestBody(
@@ -41,12 +42,9 @@ export function buildRequestBody(
   messages: Array<{ role: string; content: string }>,
   overrides?: { temperature?: number; max_tokens?: number; top_p?: number },
 ) {
-  return {
+  return route.adapter.buildRequestBody({
     model: route.config.model,
     messages,
-    stream: true,
-    temperature: overrides?.temperature ?? 0.7,
-    max_tokens: overrides?.max_tokens ?? 1024,
-    top_p: overrides?.top_p ?? 0.9,
-  };
+    overrides,
+  });
 }

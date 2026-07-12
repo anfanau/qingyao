@@ -1,4 +1,5 @@
 import type { ParsedTags, StreamCallbacks } from './types';
+import type { ProviderAdapter } from './providers/types';
 
 const TAG_ORDER = ['thinking', 'think', 'maintext', 'sum', 'vars', 'option'] as const;
 
@@ -135,14 +136,15 @@ export async function streamFetch(
   body: any,
   headers: Record<string, string>,
   callbacks: StreamCallbacks,
+  adapter: ProviderAdapter,
   signal?: AbortSignal,
 ): Promise<ParsedTags> {
   const parser = createStreamParser(callbacks);
 
   const response = await fetch(url, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', ...headers },
-    body: JSON.stringify({ ...body, stream: true }),
+    headers,
+    body: JSON.stringify(body),
     signal,
   });
 
@@ -167,11 +169,11 @@ export async function streamFetch(
 
     for (const line of lines) {
       if (!line.startsWith('data: ')) continue;
-      const data = line.slice(6).trim();
-      if (data === '[DONE]') continue;
+      const raw = line.slice(6).trim();
+      if (raw === '[DONE]') continue;
       try {
-        const json = JSON.parse(data);
-        const content = json.choices?.[0]?.delta?.content;
+        const json = JSON.parse(raw);
+        const content = adapter.parseStreamChunk(json);
         if (content) parser.feed(content);
       } catch { /* skip unparseable chunks */ }
     }
