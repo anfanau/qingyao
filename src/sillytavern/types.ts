@@ -159,10 +159,18 @@ export interface ChatPreset {
 // App Settings
 // ============================================================
 
+export type ApiProvider = 'openai-compatible' | 'gemini';
+
+export function detectProvider(baseUrl: string): ApiProvider {
+  if (baseUrl.includes('generativelanguage.googleapis.com')) return 'gemini';
+  return 'openai-compatible';
+}
+
 export interface ApiConfig {
   baseUrl: string;
   apiKey: string;
   model: string;
+  provider: ApiProvider;
 }
 
 export interface AppSettings {
@@ -191,8 +199,8 @@ export const DEFAULT_SETTINGS: AppSettings = {
   uiMode: 'game',
   customTags: [...DEFAULT_TAGS],
   api: {
-    primary: { baseUrl: 'http://localhost:1234/v1', apiKey: '', model: 'local-model' },
-    secondary: { enabled: false, baseUrl: 'http://localhost:1234/v1', apiKey: '', model: 'local-model' },
+    primary: { baseUrl: 'http://localhost:1234/v1', apiKey: '', model: 'local-model', provider: 'openai-compatible' as ApiProvider },
+    secondary: { enabled: false, baseUrl: 'http://localhost:1234/v1', apiKey: '', model: 'local-model', provider: 'openai-compatible' as ApiProvider },
   },
   activePresetId: null,
   activeLorebookIds: [],
